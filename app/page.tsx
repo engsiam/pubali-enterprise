@@ -1,0 +1,537 @@
+'use client';
+
+import { useState } from 'react';
+import {
+  Menu,
+  X,
+  Phone,
+  MessageCircle,
+  Anchor,
+  Box,
+  Wrench,
+  Shield,
+  Zap,
+  Users,
+  Truck,
+  MapPin,
+  Mail,
+} from 'lucide-react';
+
+export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Sticky Navbar */}
+      <nav className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="font-bold text-lg text-primary">
+              PUBALI <span className="text-accent">ENTERPRISE</span>
+            </div>
+
+            {/* Desktop Links */}
+            <div className="hidden md:flex gap-8">
+              {['About', 'Services', 'Gallery', 'Contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-foreground hover:text-accent transition-colors text-sm font-medium"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+
+            {/* CTA Button (Desktop) */}
+            <a
+              href="tel:+1234567890"
+              className="hidden md:inline-flex items-center gap-2 bg-accent text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm"
+            >
+              <Phone size={16} />
+              Call Now
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden pb-4 border-t border-border">
+              {['About', 'Services', 'Gallery', 'Contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="block w-full text-left px-2 py-3 text-foreground hover:text-accent transition-colors font-medium"
+                >
+                  {item}
+                </button>
+              ))}
+              <a
+                href="tel:+1234567890"
+                className="block mt-4 bg-accent text-white px-4 py-2 rounded-lg text-center font-medium"
+              >
+                Call Now
+              </a>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden">
+        <img
+          src="/images/hero-cargo-ship.jpg"
+          alt="Heavy cargo loading"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/40"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center py-20 md:py-32">
+          <div className="max-w-2xl">
+            {/* Live Operations Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 w-fit">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse-badge"></div>
+              <span className="text-sm font-medium text-white">Live: 24/7 Port Operations Active</span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Reliable Heavy Cargo & Barge Logistics
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+              Professional loading and unloading solutions for ports and river logistics. Specializing in coal, sand, and heavy machinery transport.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="tel:+1234567890"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+              >
+                <Phone size={20} />
+                Call Now
+              </a>
+              <a
+                href="https://wa.me/1234567890"
+                className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors font-semibold"
+              >
+                <MessageCircle size={20} />
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Counter Section */}
+      <section className="py-20 md:py-32 bg-primary text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { icon: Truck, value: '500+', label: 'Projects Completed' },
+              { icon: Shield, value: '12+', label: 'Years Experience' },
+              { icon: Zap, value: '50+', label: 'Heavy Equipment' },
+              { icon: Anchor, value: '100k+', label: 'Tons Handled' },
+            ].map((stat, idx) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={idx}
+                  className="text-center animate-count-up"
+                  style={{ animationDelay: `${idx * 0.1}s` }}
+                >
+                  <Icon className="w-12 h-12 mx-auto mb-4 text-blue-300" />
+                  <div className="text-4xl md:text-5xl font-bold mb-2">
+                    {stat.value}
+                  </div>
+                  <p className="text-blue-100 font-medium">{stat.label}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/images/port-operations.jpg"
+                alt="Port operations"
+                className="w-full h-96 object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+                Expert Port & River Logistics
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                With over two decades of experience, Pubali Enterprise has become a trusted partner for heavy cargo transportation. Our expertise spans across coal loading, sand logistics, and heavy machinery handling at major ports and riverine terminals.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  'Experienced crew trained in safety protocols',
+                  'Modern equipment and technology',
+                  ' 24/7 operational support',
+                  'Cost-effective logistics solutions',
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Partners Marquee */}
+      <section className="py-20 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-y border-border/50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest">
+            Trusted by Industry Leaders
+          </p>
+        </div>
+        <div className="relative">
+          {/* Left fade gradient */}
+          <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
+          {/* Right fade gradient */}
+          <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
+          
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll-marquee">
+              {[
+                'Global Shipping Co.',
+                'Port Authority',
+                'Maritime Services',
+                'Cargo Logistics',
+                'Industrial Haulers',
+                'Vessel Operations',
+              ].map((company, idx) => (
+                <div
+                  key={idx}
+                  className="flex-shrink-0 px-12 py-4 text-gray-500 font-semibold text-lg whitespace-nowrap hover:text-primary transition-colors duration-300"
+                >
+                  {company}
+                </div>
+              ))}
+              {[
+                'Global Shipping Co.',
+                'Port Authority',
+                'Maritime Services',
+                'Cargo Logistics',
+                'Industrial Haulers',
+                'Vessel Operations',
+              ].map((company, idx) => (
+                <div
+                  key={`duplicate-${idx}`}
+                  className="flex-shrink-0 px-12 py-4 text-gray-500 font-semibold text-lg whitespace-nowrap hover:text-primary transition-colors duration-300"
+                >
+                  {company}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 md:py-32 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Our Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive cargo handling solutions tailored to your logistics needs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                image: '/images/service-barge-loading.jpg',
+                title: 'Barge Loading',
+                description: 'Professional barge loading services with precision handling of bulk cargo and containers.',
+              },
+              {
+                image: '/images/service-cargo-unloading.jpg',
+                title: 'Cargo Unloading',
+                description: 'Efficient cargo unloading operations using modern equipment with safety as top priority.',
+              },
+              {
+                image: '/images/service-equipment.jpg',
+                title: 'Heavy Equipment Support',
+                description: 'Specialized handling of heavy machinery and equipment for complete logistics solutions.',
+              },
+            ].map((service, idx) => (
+              <div
+                key={idx}
+                className="relative h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+              >
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div className="absolute inset-0 flex flex-col justify-end p-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-blue-100">{service.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Why Choose Pubali Enterprise
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Industry-leading expertise and commitment to excellence
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 lg:grid-cols-4">
+            {[
+              { icon: Shield, title: 'Safe Handling', desc: 'Zero-incident safety protocols' },
+              { icon: Zap, title: 'Timely Execution', desc: 'On-schedule operations always' },
+              { icon: Users, title: 'Expert Team', desc: 'Certified professionals' },
+              { icon: Truck, title: 'Heavy Machinery', desc: 'All equipment types' },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="text-center">
+                  <Icon className="w-16 h-16 text-accent mx-auto mb-4" />
+                  <h3 className="text-lg font-bold text-primary mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-foreground text-sm">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 md:py-32 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Our Operations
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Professional cargo handling in action
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              '/images/barge-loading.jpg',
+              '/images/crane-operations.jpg',
+              '/images/cargo-unloading.jpg',
+              '/images/port-operations.jpg',
+              '/images/river-barge.jpg',
+              '/images/hero-cargo-ship.jpg',
+            ].map((src, idx) => (
+              <div
+                key={idx}
+                className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer animate-scroll-fade-in"
+                style={{ animationDelay: `${idx * 0.1}s` }}
+              >
+                <img
+                  src={src}
+                  alt={`Gallery ${idx + 1}`}
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="relative py-20 md:py-40 min-h-screen overflow-hidden">
+        {/* Full-width Map Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <iframe
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d88.123456!3d22.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPort%20Terminal%2C%20River%20Logistics%20Hub!5e0!3m2!1sen!2sin!4v1234567890"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/20 z-5"></div>
+
+        {/* Floating Card Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-full">
+          <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Contact Info - Left Side */}
+              <div className="bg-primary text-white p-12 md:p-16 flex flex-col justify-center">
+                <h3 className="text-3xl font-bold mb-12">Contact Information</h3>
+
+                <div className="space-y-8">
+                  <div className="flex gap-4">
+                    <Phone className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                    <div>
+                      <p className="font-semibold mb-1">Phone</p>
+                      <a
+                        href="tel:+1234567890"
+                        className="hover:text-blue-300 transition-colors"
+                      >
+                        +1 (234) 567-890
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <MessageCircle className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                    <div>
+                      <p className="font-semibold mb-1">WhatsApp</p>
+                      <a
+                        href="https://wa.me/1234567890"
+                        className="hover:text-blue-300 transition-colors"
+                      >
+                        +1 (234) 567-890
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <MapPin className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                    <div>
+                      <p className="font-semibold mb-1">Location</p>
+                      <p className="text-blue-100">
+                        Port Terminal, River Logistics Hub
+                        <br />
+                        Shipping City, ST 12345
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <Mail className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                    <div>
+                      <p className="font-semibold mb-1">Email</p>
+                      <a
+                        href="mailto:info@pubalienterprises.com"
+                        className="hover:text-blue-300 transition-colors"
+                      >
+                        info@pubalienterprises.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Form - Right Side */}
+              <div className="p-12 md:p-16 flex flex-col justify-center">
+                <h3 className="text-2xl font-bold text-primary mb-10">Send us a Message</h3>
+                <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                  required
+                />
+              </div>
+
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                required
+              />
+
+              <textarea
+                placeholder="Message"
+                rows={6}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white resize-none"
+                required
+              ></textarea>
+
+                <button
+                  type="submit"
+                  className="w-full bg-accent text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                >
+                  Send Message
+                </button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-primary text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-blue-100">
+              &copy; 2024 Pubali Enterprise. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="hover:text-blue-300 transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-blue-300 transition-colors">
+                Terms of Service
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/1234567890"
+        className="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all duration-300 z-40 animate-bounce"
+        aria-label="WhatsApp us"
+      >
+        <MessageCircle size={28} />
+      </a>
+    </div>
+  );
+}
