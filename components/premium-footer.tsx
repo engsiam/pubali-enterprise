@@ -1,14 +1,14 @@
 "use client";
 
 import {
-    ArrowRight,
-    Facebook,
-    Instagram,
-    Linkedin,
-    Mail,
-    MapPin,
-    Phone,
-    Twitter,
+  ArrowRight,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -194,8 +194,12 @@ export function PremiumFooter() {
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-slate-400 text-xs sm:text-sm font-medium">{label}</p>
-                  <p className="text-white font-semibold text-xs sm:text-sm break-words">{value}</p>
+                  <p className="text-slate-400 text-xs sm:text-sm font-medium">
+                    {label}
+                  </p>
+                  <p className="text-white font-semibold text-xs sm:text-sm break-words">
+                    {value}
+                  </p>
                 </div>
               </div>
             ))}

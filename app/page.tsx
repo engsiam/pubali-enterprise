@@ -28,77 +28,77 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-white">
       {/* Sticky Navbar */}
       <nav className="sticky top-0 z-50 bg-white shadow-lg border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Professional Logo */}
-            <a href="#" className="flex items-center gap-2">
+            <a href="#" className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
               <BrandLogo />
             </a>
 
-            {/* Desktop Links - Anchor Menus */}
-            <div className="hidden md:flex gap-8 items-center">
+            {/* Desktop Links - Anchor Menus (hidden on tablet and below) */}
+            <div className="hidden lg:flex gap-6 xl:gap-8 items-center">
               {["About", "Services", "Gallery", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-foreground text-base lg:text-lg font-medium cursor-pointer hover:text-primary transition-colors"
+                  className="text-foreground text-sm lg:text-base font-medium cursor-pointer hover:text-primary transition-colors"
                 >
                   {item}
                 </button>
               ))}
             </div>
 
-            {/* CTA Buttons (Desktop) */}
-            <div className="hidden md:flex gap-3 items-center">
+            {/* CTA Buttons - Only Call Now visible on tablet, both on desktop */}
+            <div className="hidden md:flex gap-2 lg:gap-3 items-center flex-shrink-0">
               <button
                 onClick={() => scrollToSection("contact")}
-                className="inline-flex items-center gap-2 border-2 border-primary text-primary px-6 py-2 rounded-lg font-medium text-sm hover:bg-primary hover:text-white transition-all"
+                className="hidden lg:inline-flex items-center gap-2 border-2 border-primary text-primary px-5 py-2 rounded-lg font-medium text-sm hover:bg-primary hover:text-white transition-all"
               >
                 Free Consultation
               </button>
               <a
                 href="tel:+1234567890"
-                className="inline-flex items-center gap-2 bg-accent text-white px-6 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-all"
+                className="hidden lg:inline-flex items-center gap-2 bg-accent text-white px-5 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-all"
               >
-                <Phone size={16} />
+                <Phone size={14} />
                 Call Now
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile/Tablet Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden"
+              className="lg:hidden"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={20} className="sm:size-5" /> : <Menu size={20} className="sm:size-5" />}
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile/Tablet Menu */}
           {isMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-border">
+            <div className="lg:hidden pb-3 sm:pb-4 border-t border-border">
               {["About", "Services", "Gallery", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block w-full text-left px-2 py-3 text-foreground text-sm font-medium hover:text-primary transition-colors"
+                  className="block w-full text-left px-2 sm:px-3 py-2.5 sm:py-3 text-foreground text-sm font-medium hover:text-primary transition-colors"
                 >
                   {item}
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection("contact")}
-                className="block w-full mt-3 border-2 border-primary text-primary px-4 py-2 rounded-lg text-center font-medium text-sm hover:bg-primary hover:text-white transition-all"
+                className="block w-full mt-2 sm:mt-3 border-2 border-primary text-primary px-3 sm:px-4 py-2 rounded-lg text-center font-medium text-xs sm:text-sm hover:bg-primary hover:text-white transition-all"
               >
                 Free Consultation
               </button>
               <a
                 href="tel:+1234567890"
-                className="block mt-2 bg-accent text-white px-4 py-2 rounded-lg text-center font-medium text-sm"
+                className="block mt-2 bg-accent text-white px-3 sm:px-4 py-2 rounded-lg text-center font-medium text-xs sm:text-sm hover:bg-blue-700 transition-all"
               >
                 Call Now
               </a>
@@ -170,9 +170,9 @@ export default function Home() {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="py-10 md:py-16 bg-primary text-white">
+      <section className="py-8 sm:py-10 md:py-16 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               {
                 icon: Truck,
@@ -416,9 +416,9 @@ export default function Home() {
           <iframe
             width="100%"
             height="100%"
-            frameBorder="0"
+            style={{ border: 0 }}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d88.123456!3d22.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPort%20Terminal%2C%20River%20Logistics%20Hub!5e0!3m2!1sen!2sin!4v1234567890"
-            allowFullScreen=""
+            allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
