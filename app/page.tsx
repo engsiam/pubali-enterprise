@@ -1,5 +1,6 @@
-"use client";
+'use client';
 
+import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { PremiumFooter } from "@/components/premium-footer";
 import {
   Anchor,
@@ -215,50 +216,12 @@ export default function Home() {
       {/* Trusted Partners Marquee */}
       <section className="py-20 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-y border-border/50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest">
+          <p className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
             Trusted by Industry Leaders
           </p>
         </div>
-        <div className="relative">
-          {/* Left fade gradient */}
-          <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
-          {/* Right fade gradient */}
-          <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
-
-          <div className="overflow-hidden">
-            <div className="flex animate-scroll-marquee">
-              {[
-                "Global Shipping Co.",
-                "Port Authority",
-                "Maritime Services",
-                "Cargo Logistics",
-                "Industrial Haulers",
-                "Vessel Operations",
-              ].map((company, idx) => (
-                <div
-                  key={idx}
-                  className="flex-shrink-0 px-12 py-4 text-gray-500 font-semibold text-lg whitespace-nowrap hover:text-primary transition-colors duration-300"
-                >
-                  {company}
-                </div>
-              ))}
-              {[
-                "Global Shipping Co.",
-                "Port Authority",
-                "Maritime Services",
-                "Cargo Logistics",
-                "Industrial Haulers",
-                "Vessel Operations",
-              ].map((company, idx) => (
-                <div
-                  key={`duplicate-${idx}`}
-                  className="flex-shrink-0 px-12 py-4 text-gray-500 font-semibold text-lg whitespace-nowrap hover:text-primary transition-colors duration-300"
-                >
-                  {company}
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <InfiniteCarousel />
         </div>
       </section>
 
@@ -406,10 +369,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="relative py-20 md:py-40 min-h-screen overflow-hidden"
-      >
+      <section id="contact" className="relative py-12 md:py-16 overflow-hidden">
         {/* Full-width Map Background */}
         <div className="absolute inset-0 w-full h-full">
           <iframe
@@ -427,61 +387,79 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/20 z-5"></div>
 
         {/* Floating Card Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-full">
-          <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
             <div className="grid md:grid-cols-2 gap-0">
               {/* Contact Info - Left Side */}
-              <div className="bg-primary text-white p-12 md:p-16 flex flex-col justify-center">
-                <h3 className="text-3xl font-bold mb-12">
-                  Contact Information
+              <div className="bg-gradient-to-br from-primary to-blue-900 text-white p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold mb-8">
+                  Get in Touch
                 </h3>
 
-                <div className="space-y-8">
-                  <div className="flex gap-4">
-                    <Phone className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                <div className="space-y-6">
+                  <div className="flex gap-4 group">
+                    <div className="w-12 h-12 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
+                      <Phone className="w-5 h-5 text-blue-300" />
+                    </div>
                     <div>
-                      <p className="font-semibold mb-1">Phone</p>
+                      <p className="text-sm text-blue-200 font-medium mb-1">
+                        Phone
+                      </p>
                       <a
                         href="tel:+1234567890"
-                        className="hover:text-blue-300 transition-colors"
+                        className="font-semibold hover:text-blue-300 transition-colors"
                       >
                         +1 (234) 567-890
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <MessageCircle className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                  <div className="flex gap-4 group">
+                    <div className="w-12 h-12 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
+                      <MessageCircle className="w-5 h-5 text-blue-300" />
+                    </div>
                     <div>
-                      <p className="font-semibold mb-1">WhatsApp</p>
+                      <p className="text-sm text-blue-200 font-medium mb-1">
+                        WhatsApp
+                      </p>
                       <a
                         href="https://wa.me/1234567890"
-                        className="hover:text-blue-300 transition-colors"
+                        className="font-semibold hover:text-blue-300 transition-colors"
                       >
                         +1 (234) 567-890
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <MapPin className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                  <div className="flex gap-4 group">
+                    <div className="w-12 h-12 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
+                      <MapPin className="w-5 h-5 text-blue-300" />
+                    </div>
                     <div>
-                      <p className="font-semibold mb-1">Location</p>
-                      <p className="text-blue-100">
+                      <p className="text-sm text-blue-200 font-medium mb-1">
+                        Location
+                      </p>
+                      <p className="font-semibold">
                         Port Terminal, River Logistics Hub
                         <br />
-                        Shipping City, ST 12345
+                        <span className="text-blue-200 text-sm">
+                          Shipping City, ST 12345
+                        </span>
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <Mail className="w-6 h-6 flex-shrink-0 mt-1 text-blue-300" />
+                  <div className="flex gap-4 group">
+                    <div className="w-12 h-12 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
+                      <Mail className="w-5 h-5 text-blue-300" />
+                    </div>
                     <div>
-                      <p className="font-semibold mb-1">Email</p>
+                      <p className="text-sm text-blue-200 font-medium mb-1">
+                        Email
+                      </p>
                       <a
                         href="mailto:info@pubalienterprises.com"
-                        className="hover:text-blue-300 transition-colors"
+                        className="font-semibold hover:text-blue-300 transition-colors break-all"
                       >
                         info@pubalienterprises.com
                       </a>
@@ -491,22 +469,22 @@ export default function Home() {
               </div>
 
               {/* Contact Form - Right Side */}
-              <div className="p-12 md:p-16 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold text-primary mb-10">
-                  Send us a Message
+              <div className="p-8 md:p-12 bg-gradient-to-br from-white to-gray-50 flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6">
+                  Send Message
                 </h3>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                <form className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
                     <input
                       type="text"
                       placeholder="First Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
                       required
                     />
                     <input
                       type="text"
                       placeholder="Last Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
                       required
                     />
                   </div>
@@ -514,20 +492,27 @@ export default function Home() {
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
+                    required
+                  />
+
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
                     required
                   />
 
                   <textarea
-                    placeholder="Message"
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white resize-none"
+                    placeholder="Your Message"
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white resize-none transition-all shadow-sm hover:shadow-md"
                     required
                   ></textarea>
 
                   <button
                     type="submit"
-                    className="w-full bg-accent text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                    className="w-full bg-gradient-to-r from-accent to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold hover:translate-y-[-2px]"
                   >
                     Send Message
                   </button>

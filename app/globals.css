@@ -144,10 +144,19 @@
 
   @keyframes marquee-smooth {
     0% {
-      transform: translateX(100%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes infinite-carousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-66.666%);
     }
   }
 
@@ -189,7 +198,7 @@
   }
 
   .animate-scroll-marquee {
-    animation: marquee-smooth 25s linear infinite;
+    animation: infinite-carousel 45s linear infinite;
   }
 
   .animate-count-up {
