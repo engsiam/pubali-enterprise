@@ -39,26 +39,34 @@ export default function Home() {
             </a>
 
             {/* Desktop Links - Anchor Menus */}
-            <div className="hidden md:flex gap-8">
+            <div className="hidden md:flex gap-8 items-center">
               {["About", "Services", "Gallery", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-foreground text-sm font-medium cursor-pointer"
+                  className="text-foreground text-base lg:text-lg font-medium cursor-pointer hover:text-primary transition-colors"
                 >
                   {item}
                 </button>
               ))}
             </div>
 
-            {/* CTA Button (Desktop) */}
-            <a
-              href="tel:+1234567890"
-              className="hidden md:inline-flex items-center gap-2 bg-accent text-white px-6 py-2 rounded-lg font-medium text-sm"
-            >
-              <Phone size={16} />
-              Call Now
-            </a>
+            {/* CTA Buttons (Desktop) */}
+            <div className="hidden md:flex gap-3 items-center">
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="inline-flex items-center gap-2 border-2 border-primary text-primary px-6 py-2 rounded-lg font-medium text-sm hover:bg-primary hover:text-white transition-all"
+              >
+                Free Consultation
+              </button>
+              <a
+                href="tel:+1234567890"
+                className="inline-flex items-center gap-2 bg-accent text-white px-6 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-all"
+              >
+                <Phone size={16} />
+                Call Now
+              </a>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -77,14 +85,20 @@ export default function Home() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block w-full text-left px-2 py-3 text-foreground text-sm font-medium"
+                  className="block w-full text-left px-2 py-3 text-foreground text-sm font-medium hover:text-primary transition-colors"
                 >
                   {item}
                 </button>
               ))}
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="block w-full mt-3 border-2 border-primary text-primary px-4 py-2 rounded-lg text-center font-medium text-sm hover:bg-primary hover:text-white transition-all"
+              >
+                Free Consultation
+              </button>
               <a
                 href="tel:+1234567890"
-                className="block mt-4 bg-accent text-white px-4 py-2 rounded-lg text-center font-medium"
+                className="block mt-2 bg-accent text-white px-4 py-2 rounded-lg text-center font-medium text-sm"
               >
                 Call Now
               </a>
@@ -158,7 +172,7 @@ export default function Home() {
       {/* Stats Counter Section */}
       <section className="py-10 md:py-16 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Truck,
@@ -320,7 +334,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-4">
             {[
               {
                 icon: Shield,
@@ -414,12 +428,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/20 z-5"></div>
 
         {/* Floating Card Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
-            <div className="grid md:grid-cols-2 gap-0">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="w-full max-w-5xl mx-auto bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl overflow-hidden border border-gray-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
               {/* Contact Info - Left Side */}
-              <div className="bg-gradient-to-br from-primary to-blue-900 text-white p-6 md:p-8 flex flex-col justify-center">
-                <h3 className="text-xl md:text-2xl font-bold mb-6">
+              <div className="bg-gradient-to-br from-primary to-blue-900 text-white p-6 md:p-8 flex flex-col justify-center min-h-max md:min-h-full">
+                <h3 className="text-lg md:text-2xl font-bold mb-4 md:mb-6">
                   Get in Touch
                 </h3>
 
@@ -497,7 +511,7 @@ export default function Home() {
 
               {/* Contact Form - Right Side */}
               <div className="p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 flex flex-col justify-center">
-                <h3 className="text-xl md:text-2xl font-bold text-primary mb-4">
+                <h3 className="text-lg md:text-2xl font-bold text-primary mb-4">
                   Send Message
                 </h3>
                 <form className="space-y-3">

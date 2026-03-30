@@ -136,7 +136,7 @@ export function PremiumFooter() {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="mb-6">
@@ -187,7 +187,7 @@ export function PremiumFooter() {
           </div>
 
           {/* Contact Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8 border-t border-b border-slate-800">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 py-8 border-t border-b border-slate-800">
             {contactInfo.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-lg bg-blue-600/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
