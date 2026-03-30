@@ -93,38 +93,52 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden">
-        <img
-          src="/images/hero-cargo-ship.jpg"
-          alt="Heavy cargo loading"
+      {/* Hero Section - Full Screen with Video Background */}
+      <section className="relative w-full h-screen bg-black text-white overflow-hidden flex items-center justify-center">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/40"></div>
+        >
+          <source src="/videos/hero-cargo.mp4" type="video/mp4" />
+          {/* Fallback to image if video doesn't load */}
+          <img
+            src="/images/hero-cargo-ship.jpg"
+            alt="Heavy cargo loading"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </video>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center py-20 md:py-32">
+        {/* Dark Overlay with Smooth Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>
+
+        {/* Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl">
             {/* Live Operations Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 w-fit">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 mb-6 w-fit animate-float-up">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse-badge"></div>
               <span className="text-sm font-medium text-white">
                 Live: 24/7 Port Operations Active
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-float-up">
               Reliable Heavy Cargo & Barge Logistics
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed animate-float-up">
               Professional loading and unloading solutions for ports and river
               logistics. Specializing in coal, sand, and heavy machinery
               transport.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 animate-float-up">
               <a
                 href="tel:+1234567890"
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold shadow-lg"
               >
                 <Phone size={20} />
                 Call Now
