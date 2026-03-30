@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  ArrowRight,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Twitter,
+    ArrowRight,
+    Facebook,
+    Instagram,
+    Linkedin,
+    Mail,
+    MapPin,
+    Phone,
+    Twitter,
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -91,7 +91,7 @@ export function PremiumFooter() {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-slate-900 to-black text-slate-100 relative">
+    <footer className="bg-gradient-to-b from-slate-900 to-black text-slate-100 relative overflow-x-hidden">
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-blue-400/5 pointer-events-none" />
 
@@ -99,36 +99,36 @@ export function PremiumFooter() {
         {/* Top Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           {/* Newsletter Section */}
-          <div className="mb-16 bg-gradient-to-r from-blue-600/10 to-blue-400/10 border border-blue-500/20 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">
+          <div className="mb-12 bg-gradient-to-r from-blue-600/10 to-blue-400/10 border border-blue-500/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 backdrop-blur-sm">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8">
+              <div className="flex-1 w-full">
+                <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 text-white">
                   Stay Updated
                 </h3>
-                <p className="text-slate-400">
+                <p className="text-slate-400 text-sm sm:text-base">
                   Subscribe to receive the latest news, updates, and exclusive
                   offers.
                 </p>
               </div>
               <form
                 onSubmit={handleSubscribe}
-                className="w-full md:w-auto flex-1 md:flex-initial"
+                className="w-full md:w-auto md:flex-initial"
               >
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="flex-1 px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+                    className="flex-1 min-w-0 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors text-sm sm:text-base"
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 whitespace-nowrap group"
+                    className="px-4 sm:px-6 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 whitespace-nowrap group text-sm sm:text-base flex-shrink-0"
                   >
                     {isSubscribed ? "Subscribed!" : "Subscribe"}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </form>
@@ -136,28 +136,28 @@ export function PremiumFooter() {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16">
             {/* Brand Section */}
             <div className="lg:col-span-1">
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold text-white">
+              <div className="mb-4 sm:mb-6">
+                <h2 className="text-lg sm:text-2xl font-bold text-white">
                   PUBALI <span className="text-blue-500">ENTERPRISE</span>
                 </h2>
-                <p className="text-slate-400 text-sm mt-2">
+                <p className="text-slate-400 text-xs sm:text-sm mt-1 sm:mt-2">
                   Delivering excellence through innovation and commitment.
                 </p>
               </div>
 
               {/* Social Links */}
-              <div className="flex gap-4">
+              <div className="flex gap-2 sm:gap-4">
                 {socialLinks.map(({ icon: Icon, link, label }) => (
                   <a
                     key={label}
                     href={link}
                     aria-label={label}
-                    className="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:border-blue-500 hover:text-white transition-all duration-300 group"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:border-blue-500 hover:text-white transition-all duration-300 group"
                   >
-                    <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    <Icon className="w-3 h-3 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
                   </a>
                 ))}
               </div>
@@ -166,17 +166,17 @@ export function PremiumFooter() {
             {/* Footer Links */}
             {footerSections.map((section) => (
               <div key={section.title}>
-                <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">
                   {section.title}
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {section.links.map((link) => (
                     <li key={link.name}>
                       <Link
                         href={link.href}
-                        className="text-slate-400 hover:text-blue-400 transition-colors duration-300 text-sm group flex items-center gap-2"
+                        className="text-slate-400 hover:text-blue-400 transition-colors duration-300 text-xs sm:text-sm group flex items-center gap-2"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-blue-500 transition-colors" />
+                        <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-slate-600 group-hover:bg-blue-500 transition-colors flex-shrink-0" />
                         {link.name}
                       </Link>
                     </li>
@@ -187,15 +187,15 @@ export function PremiumFooter() {
           </div>
 
           {/* Contact Section */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 py-8 border-t border-b border-slate-800">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 py-6 md:py-8 border-t border-b border-slate-800">
             {contactInfo.map(({ icon: Icon, label, value }) => (
-              <div key={label} className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-blue-600/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-6 h-6 text-blue-500" />
+              <div key={label} className="flex gap-2 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
                 </div>
-                <div>
-                  <p className="text-slate-400 text-sm font-medium">{label}</p>
-                  <p className="text-white font-semibold">{value}</p>
+                <div className="min-w-0">
+                  <p className="text-slate-400 text-xs sm:text-sm font-medium">{label}</p>
+                  <p className="text-white font-semibold text-xs sm:text-sm break-words">{value}</p>
                 </div>
               </div>
             ))}
@@ -204,12 +204,12 @@ export function PremiumFooter() {
 
         {/* Bottom Section */}
         <div className="border-t border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-slate-500 text-sm text-center md:text-left">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-10">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+              <p className="text-slate-500 text-xs sm:text-sm text-center md:text-left">
                 © 2024 Pubali Enterprise. All rights reserved.
               </p>
-              <div className="flex gap-6 text-sm text-slate-500">
+              <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-slate-500">
                 <a href="#" className="hover:text-blue-400 transition-colors">
                   Privacy
                 </a>
