@@ -1,5 +1,5 @@
 "use client";
-
+import { CounterItem } from "@/components/counter-item";
 import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { PremiumFooter } from "@/components/premium-footer";
 import {
@@ -145,10 +145,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { icon: Truck, value: "500+", label: "Projects Completed" },
-              { icon: Shield, value: "12+", label: "Years Experience" },
-              { icon: Zap, value: "50+", label: "Heavy Equipment" },
-              { icon: Anchor, value: "100k+", label: "Tons Handled" },
+              {
+                icon: Truck,
+                value: 500,
+                label: "Projects Completed",
+                suffix: "+",
+              },
+              {
+                icon: Shield,
+                value: 12,
+                label: "Years Experience",
+                suffix: "+",
+              },
+              { icon: Zap, value: 50, label: "Heavy Equipment", suffix: "+" },
+              { icon: Anchor, value: 100, label: "Tons Handled", suffix: "k+" },
             ].map((stat, idx) => {
               const Icon = stat.icon;
               return (
@@ -158,10 +168,12 @@ export default function Home() {
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <Icon className="w-12 h-12 mx-auto mb-4 text-blue-300" />
-                  <div className="text-4xl md:text-5xl font-bold mb-2">
-                    {stat.value}
-                  </div>
-                  <p className="text-blue-100 font-medium">{stat.label}</p>
+                  <CounterItem
+                    endValue={stat.value}
+                    label={stat.label}
+                    suffix={stat.suffix}
+                    duration={2500}
+                  />
                 </div>
               );
             })}
