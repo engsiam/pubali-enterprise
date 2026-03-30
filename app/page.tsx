@@ -126,28 +126,28 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-float-up">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-float-up">
               Reliable Heavy Cargo & Barge Logistics
             </h1>
-            <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed animate-float-up">
+            <p className="text-base sm:text-lg md:text-lg text-gray-100 mb-6 leading-relaxed animate-float-up">
               Professional loading and unloading solutions for ports and river
               logistics. Specializing in coal, sand, and heavy machinery
               transport.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-float-up">
+            <div className="flex flex-col sm:flex-row gap-3 animate-float-up">
               <a
                 href="tel:+1234567890"
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold shadow-lg text-sm sm:text-base"
               >
-                <Phone size={20} />
+                <Phone size={18} />
                 Call Now
               </a>
               <a
                 href="https://wa.me/1234567890"
-                className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-green-600 transition-colors font-semibold text-sm sm:text-base"
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={18} />
                 WhatsApp Us
               </a>
             </div>
@@ -156,9 +156,9 @@ export default function Home() {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="py-20 md:py-32 bg-primary text-white">
+      <section className="py-10 md:py-16 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-6">
             {[
               {
                 icon: Truck,
@@ -182,7 +182,7 @@ export default function Home() {
                   className="text-center animate-count-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
-                  <Icon className="w-12 h-12 mx-auto mb-4 text-blue-300" />
+                  <Icon className="w-10 h-10 mx-auto mb-3 text-blue-300" />
                   <CounterItem
                     endValue={stat.value}
                     label={stat.label}
@@ -197,24 +197,24 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 md:py-32 bg-white">
+      <section id="about" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Image */}
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img
                 src="/images/port-operations.jpg"
                 alt="Port operations"
-                className="w-full h-96 object-cover"
+                className="w-full h-64 md:h-80 object-cover"
               />
             </div>
 
             {/* Content */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
                 Expert Port & River Logistics
               </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-base text-muted-foreground mb-4 leading-relaxed">
                 With over two decades of experience, Pubali Enterprise has
                 become a trusted partner for heavy cargo transportation. Our
                 expertise spans across coal loading, sand logistics, and heavy
@@ -241,9 +241,9 @@ export default function Home() {
       </section>
 
       {/* Trusted Partners Marquee */}
-      <section className="py-20 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-y border-border/50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <p className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
+      <section className="py-10 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-y border-border/50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <p className="text-2xl md:text-3xl font-bold text-primary mb-4 text-center">
             Trusted by Industry Leaders
           </p>
         </div>
@@ -253,10 +253,10 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 md:py-32 bg-secondary">
+      <section id="services" className="py-12 md:py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">
               Our Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -265,7 +265,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 image: "/images/service-barge-loading.jpg",
@@ -288,7 +288,7 @@ export default function Home() {
             ].map((service, idx) => (
               <div
                 key={idx}
-                className="relative h-80 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                className="relative h-64 md:h-72 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
               >
                 <img
                   src={service.image}
@@ -296,11 +296,11 @@ export default function Home() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1">
                     {service.title}
                   </h3>
-                  <p className="text-blue-100">{service.description}</p>
+                  <p className="text-blue-100 text-sm">{service.description}</p>
                 </div>
               </div>
             ))}
@@ -309,10 +309,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">
               Why Choose Pubali Enterprise
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -320,7 +320,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:grid-cols-4">
+          <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-4">
             {[
               {
                 icon: Shield,
@@ -346,11 +346,11 @@ export default function Home() {
               const Icon = item.icon;
               return (
                 <div key={idx} className="text-center">
-                  <Icon className="w-16 h-16 text-accent mx-auto mb-4" />
-                  <h3 className="text-lg font-bold text-primary mb-2">
+                  <Icon className="w-12 h-12 text-accent mx-auto mb-3" />
+                  <h3 className="text-base font-bold text-primary mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-foreground text-sm">{item.desc}</p>
+                  <p className="text-foreground text-xs">{item.desc}</p>
                 </div>
               );
             })}
@@ -359,10 +359,10 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 md:py-32 bg-secondary">
+      <section id="gallery" className="py-12 md:py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">
               Our Operations
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -370,7 +370,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4">
             {[
               "/images/barge-loading.jpg",
               "/images/crane-operations.jpg",
@@ -387,7 +387,7 @@ export default function Home() {
                 <img
                   src={src}
                   alt={`Gallery ${idx + 1}`}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
             ))}
@@ -418,12 +418,12 @@ export default function Home() {
           <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
             <div className="grid md:grid-cols-2 gap-0">
               {/* Contact Info - Left Side */}
-              <div className="bg-gradient-to-br from-primary to-blue-900 text-white p-8 md:p-12 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-8">
+              <div className="bg-gradient-to-br from-primary to-blue-900 text-white p-6 md:p-8 flex flex-col justify-center">
+                <h3 className="text-xl md:text-2xl font-bold mb-6">
                   Get in Touch
                 </h3>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div className="flex gap-4 group">
                     <div className="w-12 h-12 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
                       <Phone className="w-5 h-5 text-blue-300" />
@@ -496,22 +496,22 @@ export default function Home() {
               </div>
 
               {/* Contact Form - Right Side */}
-              <div className="p-8 md:p-12 bg-gradient-to-br from-white to-gray-50 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6">
+              <div className="p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 flex flex-col justify-center">
+                <h3 className="text-xl md:text-2xl font-bold text-primary mb-4">
                   Send Message
                 </h3>
-                <form className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-3">
                     <input
                       type="text"
                       placeholder="First Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
+                      className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
                       required
                     />
                     <input
                       type="text"
                       placeholder="Last Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
+                      className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
                       required
                     />
                   </div>
@@ -519,27 +519,27 @@ export default function Home() {
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
+                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
                     required
                   />
 
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md"
+                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
                     required
                   />
 
                   <textarea
                     placeholder="Your Message"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white resize-none transition-all shadow-sm hover:shadow-md"
+                    rows={3}
+                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white resize-none transition-all shadow-sm hover:shadow-md text-sm"
                     required
                   ></textarea>
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-accent to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold hover:translate-y-[-2px]"
+                    className="w-full bg-gradient-to-r from-accent to-blue-700 text-white py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold hover:translate-y-[-2px] text-sm"
                   >
                     Send Message
                   </button>
