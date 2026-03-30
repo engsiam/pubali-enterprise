@@ -1,4 +1,5 @@
 "use client";
+import { BrandLogo } from "@/components/brand-logo";
 import { CounterItem } from "@/components/counter-item";
 import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { PremiumFooter } from "@/components/premium-footer";
@@ -29,21 +30,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Navbar */}
-      <nav className="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
+      <nav className="sticky top-0 z-50 bg-white shadow-lg border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="font-bold text-lg text-primary">
-              PUBALI <span className="text-accent">ENTERPRISE</span>
-            </div>
+            {/* Professional Logo */}
+            <a href="#" className="flex items-center gap-2">
+              <BrandLogo />
+            </a>
 
-            {/* Desktop Links */}
+            {/* Desktop Links - Anchor Menus */}
             <div className="hidden md:flex gap-8">
               {["About", "Services", "Gallery", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-foreground hover:text-accent transition-colors text-sm font-medium"
+                  className="text-foreground text-sm font-medium cursor-pointer"
                 >
                   {item}
                 </button>
@@ -53,7 +54,7 @@ export default function Home() {
             {/* CTA Button (Desktop) */}
             <a
               href="tel:+1234567890"
-              className="hidden md:inline-flex items-center gap-2 bg-accent text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm"
+              className="hidden md:inline-flex items-center gap-2 bg-accent text-white px-6 py-2 rounded-lg font-medium text-sm"
             >
               <Phone size={16} />
               Call Now
@@ -76,7 +77,7 @@ export default function Home() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block w-full text-left px-2 py-3 text-foreground hover:text-accent transition-colors font-medium"
+                  className="block w-full text-left px-2 py-3 text-foreground text-sm font-medium"
                 >
                   {item}
                 </button>
