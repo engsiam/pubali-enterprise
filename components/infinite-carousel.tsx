@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export function InfiniteCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,15 +53,12 @@ export function InfiniteCarousel() {
       {/* Right fade gradient */}
       <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-slate-50 via-slate-50/70 to-transparent z-10 pointer-events-none"></div>
 
-      <div 
+      <div
         ref={containerRef}
         className="overflow-x-hidden scroll-smooth"
-        style={{ scrollBehavior: 'auto' }}
+        style={{ scrollBehavior: "auto" }}
       >
-        <div
-          ref={scrollRef}
-          className="flex whitespace-nowrap"
-        >
+        <div ref={scrollRef} className="flex whitespace-nowrap">
           {/* Render companies multiple times for seamless loop */}
           {[...Array(6)].map((_, setIdx) =>
             companies.map((company, idx) => (
@@ -72,7 +69,7 @@ export function InfiniteCarousel() {
                 <span>{company.icon}</span>
                 <span>{company.name}</span>
               </div>
-            ))
+            )),
           )}
         </div>
       </div>

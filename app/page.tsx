@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { PremiumFooter } from "@/components/premium-footer";
