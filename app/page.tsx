@@ -1,28 +1,27 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { PremiumFooter } from "@/components/premium-footer";
 import {
-  Menu,
-  X,
-  Phone,
-  MessageCircle,
   Anchor,
-  Box,
-  Wrench,
-  Shield,
-  Zap,
-  Users,
-  Truck,
-  MapPin,
   Mail,
-} from 'lucide-react';
+  MapPin,
+  Menu,
+  MessageCircle,
+  Phone,
+  Shield,
+  Truck,
+  Users,
+  X,
+  Zap,
+} from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    element?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
@@ -39,7 +38,7 @@ export default function Home() {
 
             {/* Desktop Links */}
             <div className="hidden md:flex gap-8">
-              {['About', 'Services', 'Gallery', 'Contact'].map((item) => (
+              {["About", "Services", "Gallery", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -72,7 +71,7 @@ export default function Home() {
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden pb-4 border-t border-border">
-              {['About', 'Services', 'Gallery', 'Contact'].map((item) => (
+              {["About", "Services", "Gallery", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -106,14 +105,18 @@ export default function Home() {
             {/* Live Operations Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 w-fit">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse-badge"></div>
-              <span className="text-sm font-medium text-white">Live: 24/7 Port Operations Active</span>
+              <span className="text-sm font-medium text-white">
+                Live: 24/7 Port Operations Active
+              </span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Reliable Heavy Cargo & Barge Logistics
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-              Professional loading and unloading solutions for ports and river logistics. Specializing in coal, sand, and heavy machinery transport.
+              Professional loading and unloading solutions for ports and river
+              logistics. Specializing in coal, sand, and heavy machinery
+              transport.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -141,10 +144,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { icon: Truck, value: '500+', label: 'Projects Completed' },
-              { icon: Shield, value: '12+', label: 'Years Experience' },
-              { icon: Zap, value: '50+', label: 'Heavy Equipment' },
-              { icon: Anchor, value: '100k+', label: 'Tons Handled' },
+              { icon: Truck, value: "500+", label: "Projects Completed" },
+              { icon: Shield, value: "12+", label: "Years Experience" },
+              { icon: Zap, value: "50+", label: "Heavy Equipment" },
+              { icon: Anchor, value: "100k+", label: "Tons Handled" },
             ].map((stat, idx) => {
               const Icon = stat.icon;
               return (
@@ -184,14 +187,17 @@ export default function Home() {
                 Expert Port & River Logistics
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                With over two decades of experience, Pubali Enterprise has become a trusted partner for heavy cargo transportation. Our expertise spans across coal loading, sand logistics, and heavy machinery handling at major ports and riverine terminals.
+                With over two decades of experience, Pubali Enterprise has
+                become a trusted partner for heavy cargo transportation. Our
+                expertise spans across coal loading, sand logistics, and heavy
+                machinery handling at major ports and riverine terminals.
               </p>
               <ul className="space-y-4">
                 {[
-                  'Experienced crew trained in safety protocols',
-                  'Modern equipment and technology',
-                  ' 24/7 operational support',
-                  'Cost-effective logistics solutions',
+                  "Experienced crew trained in safety protocols",
+                  "Modern equipment and technology",
+                  " 24/7 operational support",
+                  "Cost-effective logistics solutions",
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
@@ -218,16 +224,16 @@ export default function Home() {
           <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
           {/* Right fade gradient */}
           <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-slate-50 via-slate-50/50 to-transparent z-10 pointer-events-none"></div>
-          
+
           <div className="overflow-hidden">
             <div className="flex animate-scroll-marquee">
               {[
-                'Global Shipping Co.',
-                'Port Authority',
-                'Maritime Services',
-                'Cargo Logistics',
-                'Industrial Haulers',
-                'Vessel Operations',
+                "Global Shipping Co.",
+                "Port Authority",
+                "Maritime Services",
+                "Cargo Logistics",
+                "Industrial Haulers",
+                "Vessel Operations",
               ].map((company, idx) => (
                 <div
                   key={idx}
@@ -237,12 +243,12 @@ export default function Home() {
                 </div>
               ))}
               {[
-                'Global Shipping Co.',
-                'Port Authority',
-                'Maritime Services',
-                'Cargo Logistics',
-                'Industrial Haulers',
-                'Vessel Operations',
+                "Global Shipping Co.",
+                "Port Authority",
+                "Maritime Services",
+                "Cargo Logistics",
+                "Industrial Haulers",
+                "Vessel Operations",
               ].map((company, idx) => (
                 <div
                   key={`duplicate-${idx}`}
@@ -264,26 +270,30 @@ export default function Home() {
               Our Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive cargo handling solutions tailored to your logistics needs
+              Comprehensive cargo handling solutions tailored to your logistics
+              needs
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                image: '/images/service-barge-loading.jpg',
-                title: 'Barge Loading',
-                description: 'Professional barge loading services with precision handling of bulk cargo and containers.',
+                image: "/images/service-barge-loading.jpg",
+                title: "Barge Loading",
+                description:
+                  "Professional barge loading services with precision handling of bulk cargo and containers.",
               },
               {
-                image: '/images/service-cargo-unloading.jpg',
-                title: 'Cargo Unloading',
-                description: 'Efficient cargo unloading operations using modern equipment with safety as top priority.',
+                image: "/images/service-cargo-unloading.jpg",
+                title: "Cargo Unloading",
+                description:
+                  "Efficient cargo unloading operations using modern equipment with safety as top priority.",
               },
               {
-                image: '/images/service-equipment.jpg',
-                title: 'Heavy Equipment Support',
-                description: 'Specialized handling of heavy machinery and equipment for complete logistics solutions.',
+                image: "/images/service-equipment.jpg",
+                title: "Heavy Equipment Support",
+                description:
+                  "Specialized handling of heavy machinery and equipment for complete logistics solutions.",
               },
             ].map((service, idx) => (
               <div
@@ -322,10 +332,26 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8 lg:grid-cols-4">
             {[
-              { icon: Shield, title: 'Safe Handling', desc: 'Zero-incident safety protocols' },
-              { icon: Zap, title: 'Timely Execution', desc: 'On-schedule operations always' },
-              { icon: Users, title: 'Expert Team', desc: 'Certified professionals' },
-              { icon: Truck, title: 'Heavy Machinery', desc: 'All equipment types' },
+              {
+                icon: Shield,
+                title: "Safe Handling",
+                desc: "Zero-incident safety protocols",
+              },
+              {
+                icon: Zap,
+                title: "Timely Execution",
+                desc: "On-schedule operations always",
+              },
+              {
+                icon: Users,
+                title: "Expert Team",
+                desc: "Certified professionals",
+              },
+              {
+                icon: Truck,
+                title: "Heavy Machinery",
+                desc: "All equipment types",
+              },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -356,12 +382,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              '/images/barge-loading.jpg',
-              '/images/crane-operations.jpg',
-              '/images/cargo-unloading.jpg',
-              '/images/port-operations.jpg',
-              '/images/river-barge.jpg',
-              '/images/hero-cargo-ship.jpg',
+              "/images/barge-loading.jpg",
+              "/images/crane-operations.jpg",
+              "/images/cargo-unloading.jpg",
+              "/images/port-operations.jpg",
+              "/images/river-barge.jpg",
+              "/images/hero-cargo-ship.jpg",
             ].map((src, idx) => (
               <div
                 key={idx}
@@ -380,7 +406,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-20 md:py-40 min-h-screen overflow-hidden">
+      <section
+        id="contact"
+        className="relative py-20 md:py-40 min-h-screen overflow-hidden"
+      >
         {/* Full-width Map Background */}
         <div className="absolute inset-0 w-full h-full">
           <iframe
@@ -403,7 +432,9 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-0">
               {/* Contact Info - Left Side */}
               <div className="bg-primary text-white p-12 md:p-16 flex flex-col justify-center">
-                <h3 className="text-3xl font-bold mb-12">Contact Information</h3>
+                <h3 className="text-3xl font-bold mb-12">
+                  Contact Information
+                </h3>
 
                 <div className="space-y-8">
                   <div className="flex gap-4">
@@ -461,68 +492,54 @@ export default function Home() {
 
               {/* Contact Form - Right Side */}
               <div className="p-12 md:p-16 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold text-primary mb-10">Send us a Message</h3>
+                <h3 className="text-2xl font-bold text-primary mb-10">
+                  Send us a Message
+                </h3>
                 <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
-                  required
-                />
-              </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                      required
+                    />
+                  </div>
 
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
-                required
-              />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                    required
+                  />
 
-              <textarea
-                placeholder="Message"
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white resize-none"
-                required
-              ></textarea>
+                  <textarea
+                    placeholder="Message"
+                    rows={6}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-white resize-none"
+                    required
+                  ></textarea>
 
-                <button
-                  type="submit"
-                  className="w-full bg-accent text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-                >
-                  Send Message
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    className="w-full bg-accent text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                  >
+                    Send Message
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-blue-100">
-              &copy; 2024 Pubali Enterprise. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="hover:text-blue-300 transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-blue-300 transition-colors">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Premium Footer */}
+      <PremiumFooter />
 
       {/* Floating WhatsApp Button */}
       <a
