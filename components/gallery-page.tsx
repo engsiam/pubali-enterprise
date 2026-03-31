@@ -1,5 +1,6 @@
 "use client";
 import { Loader, X } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 interface GalleryImage {
@@ -223,58 +224,42 @@ export function GalleryPage() {
               }}
             >
               {/* Image Container */}
-              <div className="relative w-full h-full bg-gray-200">
-                {imageErrors.has(image.id) ? (
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-gray-300">
-                    <div className="text-gray-500 text-center">
-                      <p className="text-sm font-medium">Image not available</p>
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                      onLoad={() => handleImageLoad(image.id)}
-                      onError={() => handleImageError(image.id)}
-                    />
+             <div className="relative w-full h-full bg-gray-200">
+  {imageErrors.has(image.id) ? (
+    <div className="w-full h-full flex flex-col items-center justify-center bg-gray-300">
+      <div className="text-gray-500 text-center">
+        <p className="text-sm font-medium">Image not available</p>
+      </div>
+    </div>
+  ) : (
+    <>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+        onError={() => handleImageError(image.id)}
+      />
 
-                    {/* Loading Spinner */}
-                    {imageLoading[image.id] !== false &&
-                      !imageErrors.has(image.id) && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                          <Loader className="w-6 h-6 text-gray-600 animate-spin" />
-                        </div>
-                      )}
-                  </>
-                )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Overlay */}
-                {!imageErrors.has(image.id) && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                )}
+      <div className="absolute top-4 right-4 z-10">
+        <span className="bg-accent text-white px-3 py-1 rounded-full text-xs font-semibold">
+          {image.category}
+        </span>
+      </div>
 
-                {/* Category Badge */}
-                {!imageErrors.has(image.id) && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-accent text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      {image.category}
-                    </span>
-                  </div>
-                )}
-
-                {/* Information */}
-                {!imageErrors.has(image.id) && (
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-lg font-bold mb-2">{image.title}</h3>
-                    <p className="text-sm text-gray-200 line-clamp-2">
-                      {image.description}
-                    </p>
-                  </div>
-                )}
-              </div>
+      <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <h3 className="text-lg font-bold mb-2">{image.title}</h3>
+        <p className="text-sm text-gray-200 line-clamp-2">
+          {image.description}
+        </p>
+      </div>
+    </>
+  )}
+</div>
             </div>
           ))}
         </div>
