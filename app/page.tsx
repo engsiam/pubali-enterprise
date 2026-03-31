@@ -1,18 +1,26 @@
 "use client";
 import { BrandLogo } from "@/components/brand-logo";
 import { CounterItem } from "@/components/counter-item";
+import { EquipmentSection } from "@/components/equipment-section";
 import { InfiniteCarousel } from "@/components/infinite-carousel";
+import { NightOperationsSection } from "@/components/night-operations";
 import { PremiumFooter } from "@/components/premium-footer";
+import { ProjectShowcase } from "@/components/project-showcase";
+import { Testimonials } from "@/components/testimonials";
 import {
   Anchor,
+  Gauge,
   Mail,
+  MailIcon,
   MapPin,
   Menu,
   MessageCircle,
+  Moon,
   Phone,
   Shield,
   Truck,
   Users,
+  Wrench,
   X,
   Zap,
 } from "lucide-react";
@@ -26,6 +34,72 @@ export default function Home() {
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    serviceType: "",
+    location: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // TODO: Replace with your actual API endpoint
+      const response = await fetch("/api/send-quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          serviceType: "",
+          location: "",
+          message: "",
+        });
+        setTimeout(() => setSubmitted(false), 3000);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const services = [
+    "Barge Loading",
+    "Barge Unloading",
+    "Crane Rental/Operation",
+    "Sand/Soil Handling",
+    "Heavy Equipment Handling",
+    "Night Operation Services",
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -148,13 +222,12 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-float-up">
-              Reliable Heavy Cargo & Barge Logistics
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-4 leading-tight animate-float-up">
+              Reliable Barge Loading & Unloading Services in Bangladesh
             </h1>
             <p className="text-base sm:text-lg md:text-lg text-gray-100 mb-6 leading-relaxed animate-float-up">
-              Professional loading and unloading solutions for ports and river
-              logistics. Specializing in coal, sand, and heavy machinery
-              transport.
+              👉 Heavy cargo handling, crane operations, and river logistics
+              solutions
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 animate-float-up">
@@ -166,11 +239,15 @@ export default function Home() {
                 Call Now
               </a>
               <a
-                href="https://wa.me/1234567890"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("contact");
+                }}
                 className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-green-600 transition-colors font-semibold text-sm sm:text-base"
               >
-                <MessageCircle size={18} />
-                WhatsApp Us
+                <MailIcon size={18} />
+                Request Quote
               </a>
             </div>
           </div>
@@ -227,31 +304,64 @@ export default function Home() {
               <img
                 src="/images/port-operations.jpg"
                 alt="Port operations"
-                className="w-full h-64 md:h-80 object-cover"
+                className="w-full h-64 md:h-auto object-cover"
               />
             </div>
 
             {/* Content */}
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
-                Expert Port & River Logistics
+                About Pubali Enterprise
               </h2>
-              <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-                With over two decades of experience, Pubali Enterprise has
-                become a trusted partner for heavy cargo transportation. Our
-                expertise spans across coal loading, sand logistics, and heavy
-                machinery handling at major ports and riverine terminals.
+              <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+                <span className="font-semibold text-foreground">
+                  Pubali Enterprise is specialized in vessel unloading and
+                  handling dry bulk materials.
+                </span>{" "}
+                Founded in 2022, we have quickly established a strong reputation
+                for our commitment to excellence, efficiency, and safety in port
+                logistics and industrial operations.
               </p>
-              <ul className="space-y-4">
+
+              <div className="mb-6">
+                <h3 className="font-semibold text-foreground mb-3">
+                  Our Specializations:
+                </h3>
+                <ul className="grid grid-cols-2 gap-3 text-sm mb-6">
+                  {[
+                    "Coal unloading",
+                    "Stone chips handling",
+                    "Sand & soil operations",
+                    "Fertilizer logistics",
+                    "Salt cargo handling",
+                    "Heavy equipment handling",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-accent font-bold">→</span>
+                      <span className="text-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="font-semibold text-foreground mb-3">
+                  Why We Stand Out:
+                </h3>
+              </div>
+
+              <ul className="space-y-3">
                 {[
-                  "Experienced crew trained in safety protocols",
-                  "Modern equipment and technology",
-                  " 24/7 operational support",
-                  "Cost-effective logistics solutions",
+                  "Experienced crew trained in safety protocols & modern best practices",
+                  "State-of-the-art equipment and technology for maximum efficiency",
+                  "24/7 operational support with round-the-clock availability",
+                  "Competitive pricing & cost-effective logistics solutions",
+                  "100% safety compliance with zero-incident record",
+                  "Proven track record across Bangladesh's major ports",
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
+                    <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-white text-sm font-bold">✓</span>
                     </div>
                     <span className="text-foreground">{item}</span>
                   </li>
@@ -287,45 +397,100 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
             {[
               {
                 image: "/images/can-holding.jpg",
-                title: "Can Holding",
+                title: "Barge Loading",
+                icon: Truck,
                 description:
-                  "Professional can holding services with precision handling of bulk cargo and containers.",
+                  "Professional barge loading operations with precision handling and modern equipment for optimal cargo placement.",
               },
               {
                 image: "/images/Unloading-Coal.jpg",
-                title: "Unloading Coal",
+                title: "Barge Unloading",
+                icon: Gauge,
                 description:
-                  "Efficient Unloading Coal operations using modern equipment with safety as top priority.",
+                  "Efficient vessel unloading operations using state-of-the-art equipment with safety as our top priority.",
               },
               {
                 image: "/images/Unloading-Fertiliser.jpg",
-                title: "Unloading Fertiliser",
+                title: "Crane Rental & Operation",
+                icon: Wrench,
                 description:
-                  "Specialized handling of heavy machinery and equipment for complete logistics solutions.",
+                  "Heavy-duty crane services up to 500 tons capacity for complex loading/unloading and equipment placement.",
               },
-            ].map((service, idx) => (
-              <div
-                key={idx}
-                className="relative h-64 md:h-72 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-              >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-1">
-                    {service.title}
-                  </h3>
-                  <p className="text-blue-100 text-sm">{service.description}</p>
+              {
+                image: "/images/operations/3.jpg",
+                title: "Sand & Soil Handling",
+                icon: Zap,
+                description:
+                  "Bulk sand, soil, and aggregate unloading with dedicated loaders and conveyor systems for fast throughput.",
+              },
+              {
+                image: "/images/port-operations.jpg",
+                title: "Heavy Equipment Handling",
+                icon: Truck,
+                description:
+                  "Specialized crane operations for loading/unloading industrial machinery, generators, and equipment.",
+              },
+              {
+                image: "/images/operations/1.jpg",
+                title: "Night Operation Services",
+                icon: Moon,
+                description:
+                  "Round-the-clock operations with industrial LED lighting and specialized night crews for 24/7 availability.",
+              },
+            ].map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
+                >
+                  {/* Background Image */}
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/10 group-hover:from-primary/95 group-hover:via-primary/75 transition-all duration-500"></div>
+
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-blue-300" />
+                      </div>
+                      <h3 className="text-lg md:text-xl font-bold text-white">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-blue-100 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-6">
+              Need a custom service package? Let's discuss your specific
+              requirements.
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all hover:shadow-lg"
+            >
+              <Mail size={18} />
+              Request Custom Quote
+            </a>
           </div>
         </div>
       </section>
@@ -380,8 +545,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Project Showcase Section */}
+      <ProjectShowcase />
+
+      {/* Equipment Section */}
+      <EquipmentSection />
+
+      {/* Night Operations Section */}
+      <NightOperationsSection />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* Quote Form Section */}
+      {/* <QuoteForm /> */}
+
       {/* Gallery Section */}
-      <section id="gallery" className="py-12 md:py-16 bg-secondary">
+      {/* <section id="gallery" className="py-12 md:py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">
@@ -412,7 +592,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section id="contact" className="relative py-12 md:py-16 overflow-hidden">
@@ -437,11 +617,14 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="w-full max-w-5xl mx-auto bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl overflow-hidden border border-gray-200">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-              {/* Contact Info - Left Side */}
               <div className="bg-gradient-to-br from-primary to-blue-900 text-white p-6 md:p-8 flex flex-col justify-center min-h-max md:min-h-full">
                 <h3 className="text-lg md:text-2xl font-bold mb-4 md:mb-6">
-                  Get in Touch
+                  Request a Free Quote
                 </h3>
+                <p className="text-lg text-white mb-8">
+                  Tell us about your project requirements and we'll provide a
+                  detailed quote within 24 hours.
+                </p>
 
                 <div className="space-y-4">
                   <div className="flex gap-4 group">
@@ -489,9 +672,9 @@ export default function Home() {
                       <p className="font-semibold">
                         Narayanganj, Bangladesh
                         <br />
-                        {/* <span className="text-blue-200 text-sm">
+                        <span className="text-blue-200 text-sm">
                           Shipping City, ST 12345
-                        </span> */}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -516,53 +699,122 @@ export default function Home() {
               </div>
 
               {/* Contact Form - Right Side */}
-              <div className="p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 flex flex-col justify-center">
-                <h3 className="text-lg md:text-2xl font-bold text-primary mb-4">
-                  Send Message
-                </h3>
-                <form className="space-y-3">
-                  <div className="grid md:grid-cols-2 gap-3">
+              <div className="bg-gradient-to-br from-slate-50 to-white rounded-lg border border-gray-200 p-6 md:p-8 shadow-lg">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Name */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Full Name *
+                    </label>
                     <input
                       type="text"
-                      placeholder="First Name"
-                      className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
-                      required
-                    />
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                       required
                     />
                   </div>
 
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
-                    required
-                  />
+                  {/* Phone & Email */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+880 1XXX XXX XXX"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="your@email.com"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all shadow-sm hover:shadow-md text-sm"
-                    required
-                  />
+                  {/* Service Type */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Service Type *
+                    </label>
+                    <select
+                      name="serviceType"
+                      value={formData.serviceType}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                      required
+                    >
+                      <option value="">Select a service...</option>
+                      {services.map((service) => (
+                        <option key={service} value={service}>
+                          {service}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                  <textarea
-                    placeholder="Your Message"
-                    rows={3}
-                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white resize-none transition-all shadow-sm hover:shadow-md text-sm"
-                    required
-                  ></textarea>
+                  {/* Location */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Project Location *
+                    </label>
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      placeholder="e.g., Dhaka River Port, Narayanganj"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                      required
+                    />
+                  </div>
 
+                  {/* Message */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Project Details
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us about your project... (tonnage, timeline, equipment needed, etc.)"
+                      rows={4}
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-accent to-blue-700 text-white py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold hover:translate-y-[-2px] text-sm"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-accent to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold disabled:opacity-70 disabled:cursor-not-allowed hover:translate-y-[-2px] text-sm"
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Get Free Quote"}
                   </button>
+
+                  {submitted && (
+                    <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+                      ✓ Quote request sent! We'll contact you shortly.
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
