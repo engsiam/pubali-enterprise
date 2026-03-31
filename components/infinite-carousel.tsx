@@ -55,7 +55,7 @@ export function InfiniteCarousel() {
 
       <div
         ref={containerRef}
-        className="overflow-x-hidden scroll-smooth"
+        className="overflow-x-hidden scroll-smooth premium-transition"
         style={{ scrollBehavior: "auto" }}
       >
         <div ref={scrollRef} className="flex whitespace-nowrap">
@@ -64,7 +64,7 @@ export function InfiniteCarousel() {
             companies.map((company, idx) => (
               <div
                 key={`${setIdx}-${idx}`}
-                className="flex-shrink-0 px-16 py-4 text-gray-500 font-semibold text-base hover:text-primary transition-colors duration-300 inline-flex items-center gap-2"
+                className="flex-shrink-0 px-16 py-4 text-muted-foreground font-medium text-base hover:text-primary hover:premium-transition transition-colors duration-300 inline-flex items-center gap-2 hover-premium-lift"
               >
                 <span>{company.icon}</span>
                 <span>{company.name}</span>

@@ -13,18 +13,18 @@ html {
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #0f172a;
+  --primary: #0c1a2e; /* Darker, richer blue for premium feel */
   --primary-foreground: #ffffff;
-  --secondary: #f3f4f6;
+  --secondary: #f8fafc; /* Lighter, cleaner secondary */
   --secondary-foreground: #0f172a;
-  --muted: #e5e7eb;
-  --muted-foreground: #6b7280;
-  --accent: #2563eb;
+  --muted: #f1f5f9; /* Softer muted */
+  --muted-foreground: #64748b;
+  --accent: #2563eb; /* Keeping blue but will use more selectively */
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
   --destructive-foreground: #fca5a5;
-  --border: #e5e7eb;
-  --input: #f3f4f6;
+  --border: #e2e8f0; /* Softer border */
+  --input: #f8fafc;
   --ring: #2563eb;
   --chart-1: #2563eb;
   --chart-2: #3b82f6;
@@ -34,11 +34,11 @@ html {
   --radius: 0.5rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #0f172a;
+  --sidebar-primary: #0c1a2e;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #2563eb;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #e5e7eb;
+  --sidebar-border: #e2e8f0;
   --sidebar-ring: #2563eb;
 }
 
@@ -78,8 +78,27 @@ html {
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
+  --font-sans: "Inter var", "Geist", "Geist Fallback"; /* Changed to Inter for premium feel */
   --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-weight-hairline: 100;
+  --font-weight-thin: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+  --tracking-h1: -0.02em;
+  --tracking-h2: -0.015em;
+  --tracking-h3: -0.01em;
+  --tracking-h4: -0.005em;
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -123,7 +142,39 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased; /* Added antialiased for smoother text */
+  }
+    /* Premium typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none tracking-h1;
+  }
+    h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl leading-tight tracking-h2;
+  }
+  
+  h3 {
+    @apply text-2xl sm:text-3xl md:text-4xl leading-tight tracking-h3;
+  }
+  
+  h4 {
+    @apply text-lg sm:text-xl md:text-2xl leading-tight tracking-h4;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+    /* Premium body text */
+  body, .text-base, .text-sm, .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl {
+    @apply font-sans;
+  }
+  
+  /* Enhanced number styling for premium feel */
+  .premium-numbers {
+    @apply font-sans tabular-nums;
   }
 }
 
@@ -216,5 +267,25 @@ html {
 
   .animate-float-up {
     animation: float-up 0.6s ease-out;
+  }
+  
+  /* Premium utility classes */
+  .premium-shadow {
+    @apply shadow-[0_10px_30px_-5px_rgba(0,0,0,0.08)];
+  }
+  
+  .premium-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .hover-premium-lift {
+    @apply hover:-translate-y-1 hover:shadow-[0_15px_35px_-5px_rgba(0,0,0,0.12)];
+  }
+    .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+  
+  .premium-gradient {
+    @apply bg-gradient-to-br from-primary via-accent to-blue-600;
   }
 }

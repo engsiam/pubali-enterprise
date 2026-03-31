@@ -60,12 +60,12 @@ export function CounterItem({
   }, [isVisible, endValue, duration]);
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="text-4xl md:text-5xl font-bold mb-2">
+    <div ref={ref} className="text-center premium-transition hover-premium-lift">
+<div className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-white premium-numbers">
         {count}
         {suffix}
       </div>
-      <p className="text-blue-100 font-medium">{label}</p>
+      <p className="text-white font-medium mt-2">{label}</p>
     </div>
   );
 }
