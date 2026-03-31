@@ -2,6 +2,7 @@
 import { BrandLogo } from "@/components/brand-logo";
 import { CounterItem } from "@/components/counter-item";
 import { EquipmentSection } from "@/components/equipment-section";
+import { GalleryPage } from "@/components/gallery-page";
 import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { NightOperationsSection } from "@/components/night-operations";
 import { PremiumFooter } from "@/components/premium-footer";
@@ -557,42 +558,8 @@ export default function Home() {
       {/* Testimonials Section */}
       <Testimonials />
 
-      {/* Quote Form Section */}
-      {/* <QuoteForm /> */}
-
-      {/* Gallery Section */}
-      {/* <section id="gallery" className="py-12 md:py-16 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">
-              Our Operations
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Professional cargo handling in action
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
-              "/images/operations/1.jpg",
-              "/images/operations/2.jpg",
-              "/images/operations/3.jpg",
-            ].map((src, idx) => (
-              <div
-                key={idx}
-                className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer animate-scroll-fade-in"
-                style={{ animationDelay: `${idx * 0.1}s` }}
-              >
-                <img
-                  src={src}
-                  alt={`Gallery ${idx + 1}`}
-                  className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
+      {/* Portfolio Gallery Section */}
+      <GalleryPage />
 
       {/* Contact Section */}
       <section id="contact" className="relative py-12 md:py-16 overflow-hidden">
