@@ -487,11 +487,11 @@ export default function Home() {
                         Location
                       </p>
                       <p className="font-semibold">
-                        Port Terminal, River Logistics Hub
+                        Narayanganj, Bangladesh
                         <br />
-                        <span className="text-blue-200 text-sm">
+                        {/* <span className="text-blue-200 text-sm">
                           Shipping City, ST 12345
-                        </span>
+                        </span> */}
                       </p>
                     </div>
                   </div>
