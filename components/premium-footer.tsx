@@ -66,7 +66,7 @@ export function PremiumFooter() {
   ];
 
   const socialLinks = [
-    { icon: Facebook, link: "#", label: "Facebook" },
+    { icon: Facebook, link: "https://www.facebook.com/people/Pubali-Enterprise-Barge-loading-unloading-company/61570405942942/", label: "Facebook" },
     { icon: Linkedin, link: "#", label: "LinkedIn" },
     { icon: Twitter, link: "#", label: "Twitter" },
     { icon: Instagram, link: "#", label: "Instagram" },
@@ -76,7 +76,7 @@ export function PremiumFooter() {
     {
       icon: MapPin,
       label: "Address",
-      value: "Dhaka, Bangladesh",
+      value: "Narayanganj, Bangladesh",
     },
     {
       icon: Phone,
@@ -143,8 +143,11 @@ export function PremiumFooter() {
                 <h2 className="text-lg sm:text-2xl font-bold text-white">
                   PUBALI <span className="text-blue-500">ENTERPRISE</span>
                 </h2>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1 sm:mt-2">
-                  Delivering excellence through innovation and commitment.
+                <p className="text-white text-xs sm:text-sm mt-1 sm:mt-2">
+                  Pubali Enterprise is specealized in vessel unloading and
+                  handling dry bulk materials. It started its journey on 2022
+                  and established a reputation for its commitment and
+                  efficiancy.
                 </p>
               </div>
 
@@ -152,6 +155,7 @@ export function PremiumFooter() {
               <div className="flex gap-2 sm:gap-4">
                 {socialLinks.map(({ icon: Icon, link, label }) => (
                   <a
+                  target="_blank"
                     key={label}
                     href={link}
                     aria-label={label}

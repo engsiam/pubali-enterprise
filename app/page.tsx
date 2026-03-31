@@ -34,7 +34,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Professional Logo */}
-            <a href="#" className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            <a
+              href="#"
+              className="flex items-center gap-1 sm:gap-2 flex-shrink-0"
+            >
               <BrandLogo />
             </a>
 
@@ -52,18 +55,19 @@ export default function Home() {
             </div>
 
             {/* CTA Buttons - Only Call Now visible on tablet, both on desktop */}
-            <div className="hidden md:flex gap-2 lg:gap-3 items-center flex-shrink-0">
+            <div className="hidden md:flex items-center gap-3 flex-shrink-0">
               <button
                 onClick={() => scrollToSection("contact")}
-                className="hidden lg:inline-flex items-center gap-2 border-2 border-primary text-primary px-5 py-2 rounded-lg font-medium text-sm hover:bg-primary hover:text-white transition-all"
+                className="cursor-pointer hidden lg:inline-flex h-11 min-w-[170px] items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 shadow-sm transition-all hover:border-primary hover:text-primary hover:shadow-md"
               >
                 Free Consultation
               </button>
+
               <a
                 href="tel:+1234567890"
-                className="hidden lg:inline-flex items-center gap-2 bg-accent text-white px-5 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-all"
+                className="hidden lg:inline-flex h-11 min-w-[170px] items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-sm transition-all hover:opacity-90 hover:shadow-md hover:bg-blue-700 bg-blue-700"
               >
-                <Phone size={14} />
+                <Phone size={16} strokeWidth={2.2} />
                 Call Now
               </a>
             </div>
@@ -74,7 +78,11 @@ export default function Home() {
               className="lg:hidden"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={20} className="sm:size-5" /> : <Menu size={20} className="sm:size-5" />}
+              {isMenuOpen ? (
+                <X size={20} className="sm:size-5" />
+              ) : (
+                <Menu size={20} className="sm:size-5" />
+              )}
             </button>
           </div>
 
@@ -282,20 +290,20 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                image: "/images/service-barge-loading.jpg",
-                title: "Barge Loading",
+                image: "/images/can-holding.jpg",
+                title: "Can Holding",
                 description:
-                  "Professional barge loading services with precision handling of bulk cargo and containers.",
+                  "Professional can holding services with precision handling of bulk cargo and containers.",
               },
               {
-                image: "/images/service-cargo-unloading.jpg",
-                title: "Cargo Unloading",
+                image: "/images/Unloading-Coal.jpg",
+                title: "Unloading Coal",
                 description:
-                  "Efficient cargo unloading operations using modern equipment with safety as top priority.",
+                  "Efficient Unloading Coal operations using modern equipment with safety as top priority.",
               },
               {
-                image: "/images/service-equipment.jpg",
-                title: "Heavy Equipment Support",
+                image: "/images/Unloading-Fertiliser.jpg",
+                title: "Unloading Fertiliser",
                 description:
                   "Specialized handling of heavy machinery and equipment for complete logistics solutions.",
               },
@@ -386,12 +394,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              "/images/barge-loading.jpg",
-              "/images/crane-operations.jpg",
-              "/images/cargo-unloading.jpg",
-              "/images/port-operations.jpg",
-              "/images/river-barge.jpg",
-              "/images/hero-cargo-ship.jpg",
+              "/images/operations/1.jpg",
+              "/images/operations/2.jpg",
+              "/images/operations/3.jpg",
             ].map((src, idx) => (
               <div
                 key={idx}
@@ -414,13 +419,14 @@ export default function Home() {
         {/* Full-width Map Background */}
         <div className="absolute inset-0 w-full h-full">
           <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58480.60147242732!2d90.4514544017446!3d23.638824738932026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b10812a520a3%3A0x6d3af4457bec4c90!2sNarayanganj!5e0!3m2!1sen!2sbd!4v1774958816543!5m2!1sen!2sbd"
             width="100%"
             height="100%"
             style={{ border: 0 }}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d88.123456!3d22.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPort%20Terminal%2C%20River%20Logistics%20Hub!5e0!3m2!1sen!2sin!4v1234567890"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full rounded-2xl"
           ></iframe>
         </div>
 
