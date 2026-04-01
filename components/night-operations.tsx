@@ -54,7 +54,7 @@ export function NightOperationsSection() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto mb-10 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-sm shadow-[0_4px_20px_rgba(255,255,255,0.04)]">
             <Moon size={15} className="text-yellow-300" />
             24/7 Capability
@@ -70,7 +70,7 @@ export function NightOperationsSection() {
           </p>
 
           {/* Trust strip */}
-          <div className="mt-5 flex flex-wrap justify-center gap-3">
+          <div className="mt-5 flex flex-wrap justify-center gap-3.5">
             {trustItems.map((item, i) => (
               <div
                 key={i}
@@ -84,7 +84,7 @@ export function NightOperationsSection() {
         </div>
 
         {/* Compact Features */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
@@ -106,11 +106,11 @@ export function NightOperationsSection() {
                   <Icon className="h-5 w-5 text-yellow-300 transition-transform duration-300 group-hover:scale-110" />
                 </div>
 
-                <h3 className="text-base font-semibold text-white">
+                <h3 className="text-sm sm:text-base font-semibold leading-snug text-white">
                   {feature.title}
                 </h3>
 
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <p className="mt-1.5 text-xs sm:text-sm leading-5 sm:leading-[1.65] text-slate-300">
                   {feature.description}
                 </p>
               </div>
@@ -122,7 +122,7 @@ export function NightOperationsSection() {
         <div className="mt-10 text-center">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-400 px-6 py-3 text-sm font-semibold text-slate-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-500/20"
+            className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-gradient-to-r from-yellow-400 to-yellow-300 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_10px_30px_rgba(250,204,21,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(250,204,21,0.28)]"
           >
             Schedule Night Operations
             <ArrowRight size={16} />
