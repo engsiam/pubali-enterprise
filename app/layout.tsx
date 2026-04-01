@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
+import PremiumCursor from "@/components/PremiumCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -52,6 +53,7 @@ export default function RootLayout({
       className={`${inter.variable} ${merriweather.variable}`}
     >
       <body className="font-sans antialiased">
+        <PremiumCursor />
         {children}
         <Analytics />
       </body>
