@@ -104,62 +104,56 @@ export function ProjectShowcase() {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-accent/50 flex flex-col"
+              className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 backdrop-blur-sm shadow-[0_8px_30px_rgba(15,23,42,0.06)] hover:shadow-[0_20px_50px_rgba(37,99,235,0.12)] hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Project Image */}
-              <div className="relative h-56 overflow-hidden bg-slate-200">
+              {/* Image */}
+              <div className="relative h-40 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/5 to-transparent opacity-90" />
+
+                <div className="absolute top-3 left-3">
+                  <span className="inline-flex items-center rounded-full bg-white/85 backdrop-blur-md px-3 py-1 text-[11px] font-medium text-slate-800 shadow-sm">
+                    {project.category}
+                  </span>
+                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 flex-1 flex flex-col">
-                {/* Category Badge */}
-                <span className="inline-block w-fit text-xs font-semibold bg-blue-50 text-accent px-3 py-1 rounded-full mb-3">
-                  {project.category}
-                </span>
-
+              <div className="p-4 flex flex-col gap-3">
                 {/* Title */}
-                <h3 className="text-lg font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                <h3 className="text-[1.05rem] font-semibold tracking-tight text-slate-900 leading-snug group-hover:text-blue-700 transition-colors">
                   {project.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-sm text-muted-foreground mb-4 flex-1">
-                  {project.description}
-                </p>
-
-                {/* Meta Info */}
-                <div className="space-y-2 mb-4 text-sm">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <MapPin size={14} className="text-accent" />
-                    <span>{project.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar size={14} className="text-accent" />
-                    <span>{project.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <TrendingUp size={14} className="text-accent" />
-                    <span className="font-semibold text-primary">
-                      {project.tonnage}
-                    </span>
-                  </div>
+                {/* Meta */}
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-slate-500">
+                  <span className="flex items-center gap-1">
+                    <MapPin size={13} className="text-slate-400" />
+                    {project.location}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Calendar size={13} className="text-slate-400" />
+                    {project.date}
+                  </span>
+                  <span className="flex items-center gap-1 font-semibold text-slate-800">
+                    <TrendingUp size={13} className="text-blue-600" />
+                    {project.tonnage}
+                  </span>
                 </div>
 
                 {/* Highlights */}
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
-                  {project.highlights.map((highlight, i) => (
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {project.highlights.slice(0, 2).map((h, i) => (
                     <span
                       key={i}
-                      className="text-xs bg-green-50 text-green-700 px-2.5 py-1 rounded-full border border-green-200"
+                      className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-medium text-emerald-700"
                     >
-                      ✓ {highlight}
+                      {h}
                     </span>
                   ))}
                 </div>
