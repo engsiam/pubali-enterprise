@@ -19,6 +19,10 @@ import {
   Moon,
   Phone,
   Shield,
+  CheckCircle2,
+  Clock3,
+  DollarSign,
+
   Truck,
   Users,
   Wrench,
@@ -296,39 +300,107 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            {/* Image */}
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="/images/port-operations.jpg"
-                alt="Port operations"
-                className="w-full h-full object-cover"
-              />
+      {/* About Section - Final Premium Balanced Redesign */}
+      <section
+        id="about"
+        className="py-20 md:py-28 bg-gradient-to-b from-slate-50 via-white to-slate-50/60"
+      >
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-14 md:mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full mb-5">
+              <span className="text-sm font-semibold text-primary">
+                About Us
+              </span>
             </div>
 
-            {/* Content */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
-                About Pubali Enterprise
-              </h2>
-              <p className="text-base text-muted-foreground mb-6 leading-relaxed">
-                <span className="font-semibold text-foreground">
-                  Pubali Enterprise is specialized in vessel unloading and
-                  handling dry bulk materials.
-                </span>{" "}
-                Founded in 2022, we have quickly established a strong reputation
-                for our commitment to excellence, efficiency, and safety in port
-                logistics and industrial operations.
-              </p>
+            <h2 className="text-2xl md:text-4xl font-bold text-primary mb-3">
+              Pubali Enterprise
+            </h2>
 
-              <div className="mb-6">
-                <h3 className="font-semibold text-foreground mb-3">
-                  Our Specializations:
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Your trusted partner in vessel unloading and dry bulk material
+              handling
+            </p>
+          </div>
+
+          {/* TOP ROW */}
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* LEFT - Large Image */}
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.18)] ring-1 ring-black/5">
+                <img
+                  src="/images/port-operations.jpg"
+                  alt="Port operations - Heavy cargo handling"
+                  className="w-full h-[360px] sm:h-[440px] lg:h-[520px] object-cover transition-transform duration-700 hover:scale-105"
+                />
+
+                {/* Dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none"></div>
+
+                {/* Bottom-left info badge */}
+                <div className="absolute left-5 bottom-5 md:left-7 md:bottom-7 bg-white/95 backdrop-blur-md rounded-2xl px-5 py-4 shadow-xl ring-1 ring-black/5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-primary"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-primary leading-none">
+                        12+
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Years of Operational Excellence
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT - Intro + Specializations only */}
+            <div className="space-y-8">
+              {/* Intro */}
+              <div className="space-y-5">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary leading-tight">
+                  Trusted Expertise in Vessel Unloading & Bulk Cargo Operations
                 </h3>
-                <ul className="grid grid-cols-2 gap-3 text-sm mb-6">
+
+                <p className="text-base md:text-lg text-foreground leading-8">
+                  <span className="font-semibold text-primary">
+                    Pubali Enterprise
+                  </span>{" "}
+                  specializes in vessel unloading and dry bulk material handling
+                  with{" "}
+                  <span className="text-accent font-semibold">precision</span>,{" "}
+                  <span className="text-accent font-semibold">safety</span>, and{" "}
+                  <span className="text-accent font-semibold">efficiency</span>.
+                </p>
+
+                <p className="text-base md:text-lg text-muted-foreground leading-8">
+                  Founded in 2022, we have rapidly built a strong reputation for
+                  dependable port logistics, industrial support, and operational
+                  excellence across Bangladesh’s major waterways.
+                </p>
+              </div>
+
+              {/* Specializations Card */}
+              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg ring-1 ring-gray-100">
+                <h4 className="text-xl md:text-2xl font-bold text-primary mb-6 flex items-center gap-3">
+                  <span className="w-1.5 h-6 bg-accent rounded-full"></span>
+                  Our Specializations
+                </h4>
+
+                <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
                   {[
                     "Coal unloading",
                     "Stone chips handling",
@@ -337,37 +409,119 @@ export default function Home() {
                     "Salt cargo handling",
                     "Heavy equipment handling",
                   ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-accent font-bold">→</span>
-                      <span className="text-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mb-6">
-                <h3 className="font-semibold text-foreground mb-3">
-                  Why We Stand Out:
-                </h3>
-              </div>
-
-              <ul className="space-y-3">
-                {[
-                  "Experienced crew trained in safety protocols & modern best practices",
-                  "State-of-the-art equipment and technology for maximum efficiency",
-                  "24/7 operational support with round-the-clock availability",
-                  "Competitive pricing & cost-effective logistics solutions",
-                  "100% safety compliance with zero-incident record",
-                  "Proven track record across Bangladesh's major ports",
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-white text-sm font-bold">✓</span>
+                    <div key={idx} className="flex items-center gap-3">
+                      <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <svg
+                          className="w-4 h-4 text-accent"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-sm md:text-base text-foreground font-medium leading-relaxed">
+                        {item}
+                      </span>
                     </div>
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* BOTTOM ROW - Why Stand Out */}
+          <div className="mt-16 md:mt-20">
+            <div className="text-center mb-10">
+              <h3 className="text-2xl md:text-4xl font-bold text-primary mb-3">
+                Why We Stand Out
+              </h3>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                We combine skilled manpower, operational discipline, and modern
+                logistics support to deliver reliable service every time.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+              {[
+                {
+                  title: "Experienced Crew",
+                  text: "Experienced crew trained in safety protocols and modern operational best practices.",
+                  icon: Shield,
+                },
+                {
+                  title: "Modern Equipment",
+                  text: "State-of-the-art equipment and technology for maximum efficiency and smooth execution.",
+                  icon: Zap,
+                },
+                {
+                  title: "24/7 Support",
+                  text: "Round-the-clock operational support to ensure continuity and timely service delivery.",
+                  icon: Clock3,
+                },
+                {
+                  title: "Cost-Effective Solutions",
+                  text: "Competitive pricing with practical logistics planning for better value and efficiency.",
+                  icon: DollarSign,
+                },
+                {
+                  title: "Safety Compliance",
+                  text: "Strict safety compliance with a zero-incident operational commitment.",
+                  icon: CheckCircle2,
+                },
+                {
+                  title: "Proven Port Track Record",
+                  text: "Strong execution experience across Bangladesh’s major ports and waterways.",
+                  icon: MapPin,
+                },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 ring-1 ring-gray-100 hover:-translate-y-1"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center shadow-md mb-5">
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+
+                    <h4 className="text-lg md:text-xl font-bold text-primary mb-3">
+                      {item.title}
+                    </h4>
+
+                    <p className="text-muted-foreground leading-7 text-sm md:text-base">
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-12 md:mt-14 text-center">
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="group inline-flex items-center gap-3 bg-primary text-white px-8 md:px-10 py-4 rounded-2xl font-semibold text-base md:text-lg shadow-lg hover:shadow-2xl hover:bg-blue-800 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <Mail size={20} />
+                Get Free Consultation
+                <svg
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
