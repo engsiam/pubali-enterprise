@@ -162,7 +162,7 @@ const Hero = () => {
             solutions.
           </p>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-row gap-3 sm:flex-row">
             <a
               href="tel:+1234567890"
               className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700"
