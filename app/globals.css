@@ -78,8 +78,8 @@ html {
 }
 
 @theme inline {
-  --font-sans: "Inter var", "Geist", "Geist Fallback"; /* Changed to Inter for premium feel */
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-sans: "Merriweather", "Geist", "Geist Fallback"; /* Changed to Inter for premium feel */
+  --font-mono: "Inter", "Geist Mono Fallback";
   --font-weight-hairline: 100;
   --font-weight-thin: 200;
   --font-weight-light: 300;

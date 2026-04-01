@@ -223,7 +223,7 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-4 leading-tight animate-float-up">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-bold text-white mb-4 leading-tight animate-float-up">
               Reliable Barge Loading & Unloading Services in Bangladesh
             </h1>
             <p className="text-base sm:text-lg md:text-lg text-gray-100 mb-6 leading-relaxed animate-float-up">
@@ -299,13 +299,13 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Image */}
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img
                 src="/images/port-operations.jpg"
                 alt="Port operations"
-                className="w-full h-64 md:h-auto object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
 
@@ -394,13 +394,14 @@ export default function Home() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Comprehensive cargo handling solutions tailored to your logistics
-              needs
+              needs. Click on any service to learn more.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
             {[
               {
+                slug: "barge-loading",
                 image: "/images/can-holding.jpg",
                 title: "Barge Loading",
                 icon: Truck,
@@ -408,6 +409,7 @@ export default function Home() {
                   "Professional barge loading operations with precision handling and modern equipment for optimal cargo placement.",
               },
               {
+                slug: "barge-unloading",
                 image: "/images/Unloading-Coal.jpg",
                 title: "Barge Unloading",
                 icon: Gauge,
@@ -415,6 +417,7 @@ export default function Home() {
                   "Efficient vessel unloading operations using state-of-the-art equipment with safety as our top priority.",
               },
               {
+                slug: "crane-rental-operation",
                 image: "/images/Unloading-Fertiliser.jpg",
                 title: "Crane Rental & Operation",
                 icon: Wrench,
@@ -422,6 +425,7 @@ export default function Home() {
                   "Heavy-duty crane services up to 500 tons capacity for complex loading/unloading and equipment placement.",
               },
               {
+                slug: "sand-soil-handling",
                 image: "/images/operations/3.jpg",
                 title: "Sand & Soil Handling",
                 icon: Zap,
@@ -429,6 +433,7 @@ export default function Home() {
                   "Bulk sand, soil, and aggregate unloading with dedicated loaders and conveyor systems for fast throughput.",
               },
               {
+                slug: "heavy-equipment-handling",
                 image: "/images/port-operations.jpg",
                 title: "Heavy Equipment Handling",
                 icon: Truck,
@@ -436,6 +441,7 @@ export default function Home() {
                   "Specialized crane operations for loading/unloading industrial machinery, generators, and equipment.",
               },
               {
+                slug: "night-operation-services",
                 image: "/images/operations/1.jpg",
                 title: "Night Operation Services",
                 icon: Moon,
@@ -445,8 +451,9 @@ export default function Home() {
             ].map((service, idx) => {
               const Icon = service.icon;
               return (
-                <div
+                <a
                   key={idx}
+                  href={`/services/${service.slug}`}
                   className="group relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
                 >
                   {/* Background Image */}
@@ -473,8 +480,14 @@ export default function Home() {
                     <p className="text-blue-100 text-sm leading-relaxed">
                       {service.description}
                     </p>
+
+                    {/* View Details Arrow */}
+                    <div className="mt-4 inline-flex items-center text-white font-semibold group-hover:gap-2 gap-1 transition-all duration-300">
+                      View Details
+                      <span>→</span>
+                    </div>
                   </div>
-                </div>
+                </a>
               );
             })}
           </div>
@@ -485,13 +498,21 @@ export default function Home() {
               Need a custom service package? Let's discuss your specific
               requirements.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              <Mail size={18} />
-              Request Custom Quote
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-all hover:shadow-lg"
+              >
+                View All Services
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all hover:shadow-lg"
+              >
+                <Mail size={18} />
+                Request Custom Quote
+              </a>
+            </div>
           </div>
         </div>
       </section>
