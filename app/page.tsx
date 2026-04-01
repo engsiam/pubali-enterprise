@@ -1,16 +1,20 @@
 "use client";
 import { BrandLogo } from "@/components/brand-logo";
+import { Contact } from "@/components/Contact";
 import { CounterItem } from "@/components/counter-item";
-import { EquipmentFleet, EquipmentSection } from "@/components/equipment-section";
+import { EquipmentFleet } from "@/components/EquipmentFleet";
 import { GalleryPage } from "@/components/gallery-page";
+import Hero from "@/components/Hero";
 import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { NightOperationsSection } from "@/components/night-operations";
 import { PremiumFooter } from "@/components/premium-footer";
 import { ProjectShowcase } from "@/components/project-showcase";
 import { Testimonials } from "@/components/testimonials";
-import { Contact } from "@/components/Contact";
 import {
   Anchor,
+  CheckCircle2,
+  Clock3,
+  DollarSign,
   Gauge,
   Mail,
   MailIcon,
@@ -20,10 +24,6 @@ import {
   Moon,
   Phone,
   Shield,
-  CheckCircle2,
-  Clock3,
-  DollarSign,
-
   Truck,
   Users,
   Wrench,
@@ -130,69 +130,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Full Screen with Video Background */}
-      <section className="relative w-full h-screen bg-black text-white overflow-hidden flex items-center justify-center">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/hero-cargo.mp4" type="video/mp4" />
-          {/* Fallback to image if video doesn't load */}
-          <img
-            src="/images/hero-cargo-ship.jpg"
-            alt="Heavy cargo loading"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </video>
-
-        {/* Dark Overlay with Smooth Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>
-
-        {/* Content Container */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
-            {/* Live Operations Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 mb-6 w-fit animate-float-up">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse-badge"></div>
-              <span className="text-sm font-medium text-white">
-                Live: 24/7 Port Operations Active
-              </span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-bold text-white mb-4 leading-tight animate-float-up">
-              Reliable Barge Loading & Unloading Services in Bangladesh
-            </h1>
-            <p className="text-base sm:text-lg md:text-lg text-gray-100 mb-6 leading-relaxed animate-float-up">
-              👉 Heavy cargo handling, crane operations, and river logistics
-              solutions
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 animate-float-up">
-              <a
-                href="tel:+1234567890"
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold shadow-lg text-sm sm:text-base"
-              >
-                <Phone size={18} />
-                Call Now
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("contact");
-                }}
-                className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-green-600 transition-colors font-semibold text-sm sm:text-base"
-              >
-                <MailIcon size={18} />
-                Request Quote
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Stats Counter Section */}
       <section className="py-8 sm:py-10 md:py-16 bg-primary text-white">
