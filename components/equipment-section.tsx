@@ -1,143 +1,211 @@
-import { Code2, Wrench, Zap } from "lucide-react";
+import { ArrowRight, ShieldCheck, Truck, Wrench } from "lucide-react";
+import Image from "next/image";
 
-export function EquipmentSection() {
+export function EquipmentFleet() {
   const equipment = [
     {
-      name: "Heavy-Duty Cranes",
-      capacity: "Up to 500 ton capacity",
+      title: "Heavy-Duty Cranes",
       description:
-        "Mobile hydraulic cranes for precise loading and unloading operations with advanced safety features.",
+        "Mobile hydraulic cranes for precise loading and unloading with advanced operational safety.",
+      image: "/images/operations/3.jpg",
+      badge: "Up to 500 ton capacity",
+      tags: ["Barge operations", "Heavy equipment"],
+    },
+    {
+      title: "Bulk Material Loaders",
+      description:
+        "High-capacity loaders built for sand, coal, fertilizer, and aggregate material handling.",
+      image: "/images/operations/1.jpg",
+      badge: "40–60 ton/hour throughput",
+      tags: ["Soil handling", "Material unloading"],
+    },
+    {
+      title: "LED Night Operation Lights",
+      description:
+        "Industrial-grade lighting systems enabling safe 24/7 operations with reliable visibility.",
+      image: "/images/operations/2.jpg",
+      badge: "1000+ lux illumination",
+      tags: ["24/7 work", "Safety compliance"],
+    },
+    {
+      title: "Conveyor Systems",
+      description:
+        "Efficient transfer systems designed for smooth material movement with dust control support.",
+      image: "/images/service-barge-loading.jpg",
+      badge: "Up to 300 ton/day",
+      tags: ["Material transfer", "Efficiency"],
+    },
+    {
+      title: "Transport Vehicles",
+      description:
+        "Reliable fleet support for cargo transportation, internal logistics, and site coordination.",
+      image: "/images/Unloading-Coal.jpg",
+      badge: "10–20 ton capacity",
+      tags: ["Transport", "Quick delivery"],
+    },
+    {
+      title: "Safety Equipment Package",
+      description:
+        "Complete PPE, harnesses, and safety systems aligned with industrial site requirements.",
+      image: "/images/crane-operations.jpg",
+      badge: "100% compliance",
+      tags: ["Worker safety", "Risk mitigation"],
+    },
+  ];
+
+  const stats = [
+    {
       icon: Wrench,
-      uses: ["Barge operations", "Heavy equipment", "Container handling"],
-      image: "/images/crane-equipment.jpg",
+      value: "500T+",
+      label: "Lift Capacity",
     },
     {
-      name: "Bulk Material Loaders",
-      capacity: "40-60 ton/hour throughput",
-      description:
-        "High-capacity loaders specifically designed for sand, coal, fertilizer, and aggregate materials.",
-      icon: Code2,
-      uses: ["Soil handling", "Sand operations", "Material unloading"],
-      image: "/images/loader-equipment.jpg",
+      icon: Truck,
+      value: "24/7",
+      label: "Operations",
     },
     {
-      name: "LED Night Operation Lights",
-      capacity: "1000+ lux illumination",
-      description:
-        "Industrial-grade LED lighting systems enabling safe 24/7 operations with minimal power consumption.",
-      icon: Zap,
-      uses: [
-        "Round-the-clock work",
-        "Safety compliance",
-        "Schedule flexibility",
-      ],
-      image: "/images/night-lights.jpg",
+      icon: ShieldCheck,
+      value: "1000+",
+      label: "Lux Lighting",
     },
     {
-      name: "Conveyor Systems",
-      capacity: "Up to 300 ton/day",
-      description:
-        "Modular conveyor belts for efficient material transfer with dust control and safety guards.",
-      icon: Wrench,
-      uses: ["Material transfer", "Dust control", "Efficiency"],
-      image: "/images/conveyor.jpg",
-    },
-    {
-      name: "Transport Vehicles",
-      capacity: "10-20 ton capacity",
-      description:
-        "Fleet of trucks and tippers for reliable material transportation and site logistics.",
-      icon: Code2,
-      uses: ["Material transport", "Site logistics", "Quick delivery"],
-      image: "/images/trucks.jpg",
-    },
-    {
-      name: "Safety Equipment Package",
-      capacity: "100% compliance",
-      description:
-        "Complete PPE, harnesses, and safety systems meeting all international standards.",
-      icon: Zap,
-      uses: ["Worker safety", "Compliance", "Risk mitigation"],
-      image: "/images/safety-equipment.jpg",
+      icon: ArrowRight,
+      value: "18+",
+      label: "Years Experience",
     },
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-16 md:py-20">
+      {/* subtle background glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-100/40 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-slate-100 blur-3xl" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 shadow-sm">
+            Industrial Equipment
+          </div>
+
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-900 md:text-5xl">
             Our Equipment Fleet
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+
+          <p className="mt-4 text-[15px] leading-8 text-slate-600 md:text-lg">
             State-of-the-art machinery and technology enabling efficient, safe,
-            and reliable industrial operations
+            and reliable industrial operations across cargo, river, and heavy
+            material projects.
           </p>
         </div>
 
-        {/* Equipment Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {equipment.map((item, idx) => {
-            const Icon = item.icon;
+        {/* Premium Stats */}
+        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
             return (
               <div
                 key={idx}
-                className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-accent/50"
+                className="group rounded-2xl border border-slate-200 bg-white/90 px-5 py-5 text-center shadow-[0_8px_24px_rgba(15,23,42,0.06)] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,0.10)]"
               >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden bg-gray-200">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/60 to-blue-900/60 z-10 group-hover:opacity-70 transition-opacity"></div>
-                  <Icon className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 text-white/80 z-20" />
+                <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 ring-1 ring-blue-100">
+                  <Icon className="h-5 w-5 text-blue-700" />
                 </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  {/* Title & Capacity */}
-                  <div className="mb-3">
-                    <h3 className="text-lg font-bold text-primary mb-1">
-                      {item.name}
-                    </h3>
-                    <p className="text-sm text-accent font-semibold">
-                      {item.capacity}
-                    </p>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  {/* Uses */}
-                  <div className="flex flex-wrap gap-2">
-                    {item.uses.map((use, i) => (
-                      <span
-                        key={i}
-                        className="text-xs bg-blue-50 text-primary px-2.5 py-1 rounded-full border border-blue-200"
-                      >
-                        {use}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-xl font-bold tracking-tight text-slate-900 md:text-2xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-slate-500">
+                  {stat.label}
+                </p>
               </div>
             );
           })}
         </div>
 
+        {/* Cards */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {equipment.map((item, idx) => (
+            <div
+              key={idx}
+              className="group overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-blue-200 hover:shadow-[0_24px_50px_rgba(15,23,42,0.10)]"
+            >
+              {/* Image */}
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+
+                {/* overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+
+                {/* badge */}
+                <div className="absolute bottom-4 left-4">
+                  <span className="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800 shadow-sm backdrop-blur">
+                    {item.badge}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-[1.35rem] font-bold tracking-tight text-slate-900">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-[15px] leading-8 text-slate-600">
+                  {item.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {item.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="rounded-full border border-blue-100 bg-blue-50/70 px-3 py-1 text-[11px] font-medium text-blue-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Bottom CTA */}
-        <div className="mt-12 text-center bg-gradient-to-r from-primary to-blue-700 rounded-lg p-8 text-white">
-          <h3 className="text-2xl font-bold mb-3">Need Specific Equipment?</h3>
-          <p className="mb-6 max-w-2xl mx-auto">
-            Our equipment rental and operation services can be customized for
-            your project needs. Get in touch with our team.
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-          >
-            Request Equipment Quote
-          </a>
+        <div className="mt-14 text-center">
+          <div className="mx-auto max-w-3xl rounded-3xl border border-slate-200 bg-white/90 px-6 py-8 shadow-[0_12px_32px_rgba(15,23,42,0.05)] backdrop-blur">
+            <h3 className="text-2xl font-bold text-slate-900">
+              Ready for Large-Scale Port Operations?
+            </h3>
+            <p className="mt-3 text-[15px] leading-7 text-slate-600">
+              Our equipment fleet is prepared for coal, fertilizer, sand,
+              aggregate, and heavy cargo handling across river and port
+              operations.
+            </p>
+
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700"
+              >
+                Request Equipment Support
+                <ArrowRight size={16} />
+              </a>
+
+              <a
+                href="#gallery"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400"
+              >
+                View Project Gallery
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

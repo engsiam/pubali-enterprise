@@ -1,7 +1,7 @@
 "use client";
 import { BrandLogo } from "@/components/brand-logo";
 import { CounterItem } from "@/components/counter-item";
-import { EquipmentSection } from "@/components/equipment-section";
+import { EquipmentFleet, EquipmentSection } from "@/components/equipment-section";
 import { GalleryPage } from "@/components/gallery-page";
 import { InfiniteCarousel } from "@/components/infinite-carousel";
 import { NightOperationsSection } from "@/components/night-operations";
@@ -660,7 +660,7 @@ export default function Home() {
       <ProjectShowcase />
 
       {/* Equipment Section */}
-      <EquipmentSection />
+      <EquipmentFleet />
 
       {/* Night Operations Section */}
       <NightOperationsSection />
