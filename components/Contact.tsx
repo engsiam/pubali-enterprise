@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
+  ArrowRight,
   Clock3,
   ExternalLink,
   Mail,
@@ -110,7 +112,7 @@ export function Contact() {
       id="contact"
       className="relative overflow-hidden py-16 md:py-20 lg:py-24"
     >
-      {/* Background Map */}
+      {/* Map Background */}
       <div className="absolute inset-0">
         <iframe
           title="Pubali Enterprise Location"
@@ -119,23 +121,32 @@ export function Contact() {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
-
-        {/* Premium overlays */}
-        <div className="absolute inset-0 bg-slate-950/55" />
-        <div className="absolute inset-0 backdrop-blur-[1.5px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.10),transparent_30%)]" />
+        <div className="absolute inset-0 bg-slate-950/60" />
+        <div className="absolute inset-0 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.12),transparent_32%),radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_40%)]" />
       </div>
 
-      {/* Main Container */}
+      {/* Floating glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[8%] top-[15%] h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute right-[10%] bottom-[12%] h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+      </div>
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-md">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mx-auto mb-10 max-w-3xl text-center md:mb-14"
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.18)]">
             <Clock3 size={15} className="text-blue-300" />
             Fast Response Within 24 Hours
           </div>
 
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-white md:text-5xl [text-shadow:0_8px_30px_rgba(0,0,0,0.35)]">
             Request a Project Quote
           </h2>
 
@@ -144,13 +155,19 @@ export function Contact() {
             operation requirements and our team will prepare a practical quote
             for your project.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Main Floating Card */}
-        <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/70 shadow-[0_25px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+        {/* Main Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 34 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="overflow-hidden rounded-[30px] border border-white/10 bg-white/70 shadow-[0_30px_90px_rgba(0,0,0,0.28)] backdrop-blur-2xl transition-all duration-500 hover:shadow-[0_35px_100px_rgba(0,0,0,0.34)]"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr]">
             {/* Left Panel */}
-            <div className="relative bg-gradient-to-br from-[#08142f] via-[#0f2b6b] to-[#18439c] p-6 text-white md:p-8 lg:p-10 xl:p-12">
+            <div className="relative bg-gradient-to-br from-[#07142f] via-[#0f2c72] to-[#1b4fb5] p-6 text-white md:p-8 lg:p-10 xl:p-12">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.18),transparent_35%)]" />
 
               <div className="relative z-10">
@@ -169,13 +186,12 @@ export function Contact() {
                   plan and quotation.
                 </p>
 
-                {/* Tags */}
                 <div className="mt-8 flex flex-wrap gap-3">
                   {["Port Operations", "Heavy Equipment", "Night Handling"].map(
                     (item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-medium text-blue-100"
+                        className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-medium text-blue-100 shadow-sm"
                       >
                         {item}
                       </span>
@@ -183,12 +199,11 @@ export function Contact() {
                   )}
                 </div>
 
-                {/* Contact Items */}
                 <div className="mt-10 space-y-4">
                   {contactItems.map((item, idx) => {
                     const Icon = item.icon;
                     return (
-                      <a
+                      <motion.a
                         key={idx}
                         href={item.href}
                         target={
@@ -199,7 +214,9 @@ export function Contact() {
                             ? "noopener noreferrer"
                             : undefined
                         }
-                        className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/12"
+                        whileHover={{ y: -3, scale: 1.01 }}
+                        transition={{ duration: 0.25 }}
+                        className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/12 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
                       >
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/10">
                           <Icon className="h-5 w-5 text-blue-200 transition-transform duration-300 group-hover:scale-110" />
@@ -213,23 +230,22 @@ export function Contact() {
                             {item.value}
                           </p>
                           {item.sub && (
-                            <p className="text-xs text-blue-200/70 mt-0.5">
+                            <p className="mt-0.5 text-xs text-blue-200/70">
                               {item.sub}
                             </p>
                           )}
                         </div>
-                      </a>
+                      </motion.a>
                     );
                   })}
                 </div>
 
-                {/* Map CTA */}
                 <div className="mt-8">
                   <a
                     href="https://maps.google.com/?q=Narayanganj,Bangladesh"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/15"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/15 hover:shadow-lg"
                   >
                     View on Google Maps
                     <ExternalLink size={16} />
@@ -238,10 +254,9 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Right Form Panel */}
+            {/* Right Form */}
             <div className="bg-white/92 p-6 md:p-8 lg:p-10 xl:p-12">
               <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Name */}
                 <div>
                   <label className="mb-2 block text-sm font-medium text-slate-800">
                     Full Name *
@@ -252,12 +267,11 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your full name"
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-slate-300"
                     required
                   />
                 </div>
 
-                {/* Phone & Email */}
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-slate-800">
@@ -269,7 +283,7 @@ export function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+880 1XXX XXX XXX"
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-slate-300"
                       required
                     />
                   </div>
@@ -284,13 +298,12 @@ export function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-slate-300"
                       required
                     />
                   </div>
                 </div>
 
-                {/* Service */}
                 <div>
                   <label className="mb-2 block text-sm font-medium text-slate-800">
                     Service Type *
@@ -299,7 +312,7 @@ export function Contact() {
                     name="serviceType"
                     value={formData.serviceType}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-slate-300"
                     required
                   >
                     <option value="">Select a service...</option>
@@ -311,7 +324,6 @@ export function Contact() {
                   </select>
                 </div>
 
-                {/* Location */}
                 <div>
                   <label className="mb-2 block text-sm font-medium text-slate-800">
                     Project Location *
@@ -322,12 +334,11 @@ export function Contact() {
                     value={formData.location}
                     onChange={handleChange}
                     placeholder="e.g., Dhaka River Port, Narayanganj"
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-slate-300"
                     required
                   />
                 </div>
 
-                {/* Message */}
                 <div>
                   <label className="mb-2 block text-sm font-medium text-slate-800">
                     Project Details
@@ -338,18 +349,20 @@ export function Contact() {
                     onChange={handleChange}
                     placeholder="Tell us about your project... (tonnage, timeline, equipment needed, etc.)"
                     rows={5}
-                    className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-slate-300"
                   />
                 </div>
 
-                {/* Submit */}
                 <div className="pt-2">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/20 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_14px_30px_rgba(37,99,235,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {isSubmitting ? "Sending Request..." : "Get Free Quote"}
+                    {!isSubmitting && (
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    )}
                   </button>
 
                   <p className="mt-3 text-center text-xs text-slate-500">
@@ -357,17 +370,20 @@ export function Contact() {
                   </p>
                 </div>
 
-                {/* Success */}
                 {submitted && (
-                  <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
+                  >
                     ✓ Quote request sent successfully. Our team will contact you
                     shortly.
-                  </div>
+                  </motion.div>
                 )}
               </form>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
