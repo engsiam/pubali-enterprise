@@ -1,4 +1,5 @@
 import { Star, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Testimonials() {
   const testimonials = [
@@ -92,10 +93,22 @@ export function Testimonials() {
   const secondColumn = testimonials.slice(3, 6);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-14 md:py-20">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+      className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-14 md:py-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-4">
             <Users size={16} className="text-blue-600" />
             <span className="text-sm font-medium text-blue-700">
@@ -110,10 +123,16 @@ export function Testimonials() {
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             See what our clients say about working with Pubali Enterprise
           </p>
-        </div>
+        </motion.div>
 
         {/* Moving Columns */}
-        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 h-[520px] overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative grid grid-cols-1 md:grid-cols-2 gap-6 h-[520px] overflow-hidden"
+        >
           {/* fade top */}
           <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-20 bg-gradient-to-b from-slate-50 to-transparent" />
           {/* fade bottom */}
@@ -142,9 +161,9 @@ export function Testimonials() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

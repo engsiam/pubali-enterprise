@@ -1,7 +1,9 @@
 "use client";
 
+import { BrandLogo } from "@/components/brand-logo";
 import { MailIcon, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -146,8 +148,18 @@ const Hero = () => {
       />
 
       {/* ✅ content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="max-w-2xl"
+        >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-md">
             <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
             <span className="text-sm">Live: 24/7 Port Operations</span>
@@ -183,8 +195,8 @@ const Hero = () => {
               Request Quote
             </a>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

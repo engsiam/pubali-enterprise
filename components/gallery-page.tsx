@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -158,7 +159,7 @@ export function GalleryPage() {
       { name: "Heavy Equipment", count: counts["Heavy Equipment"] },
       { name: "River Projects", count: counts["River Projects"] },
     ];
-  }, []);
+  }, [galleryImages]); // Added galleryImages as a dependency just to be safe
 
   const filteredImages =
     selectedCategory === "All Works"
@@ -177,13 +178,23 @@ export function GalleryPage() {
   };
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
       id="gallery"
       className="bg-gradient-to-b from-white to-slate-50 py-14 md:py-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto mb-10 max-w-3xl text-center"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
             Portfolio Gallery
           </h2>
@@ -191,10 +202,16 @@ export function GalleryPage() {
             Explore our extensive work portfolio showcasing real operations,
             equipment, and projects across Bangladesh&apos;s ports.
           </p>
-        </div>
+        </motion.div>
 
         {/* Filters */}
-        <div className="mb-10 flex flex-wrap justify-center gap-2.5">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-10 flex flex-wrap justify-center gap-2.5"
+        >
           {categories.map((category) => (
             <button
               key={category.name}
@@ -217,10 +234,16 @@ export function GalleryPage() {
               </span>
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-3"
+        >
           {visibleImages.map((image) => (
             <div
               key={image.id}
@@ -265,7 +288,7 @@ export function GalleryPage() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Load More */}
         {visibleCount < filteredImages.length && (
@@ -288,59 +311,64 @@ export function GalleryPage() {
 
       {/* Modal */}
       {selectedImage && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
           onClick={() => setSelectedImage(null)}
         >
-          <div
-            className="relative w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_25px_80px_rgba(0,0,0,0.5)]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-black/65"
-              aria-label="Close modal"
-            >
-              <X size={18} />
-            </button>
-
-            {/* Image */}
-            <div className="relative aspect-[16/10] w-full bg-slate-100">
-              {imageErrors.has(selectedImage.id) ? (
-                <div className="flex h-full w-full items-center justify-center text-slate-500">
-                  Image not available
+          {(() => {
+            const img = selectedImage;
+            return (
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                className="relative w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_25px_80px_rgba(0,0,0,0.5)]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-black/65"
+                  aria-label="Close modal"
+                >
+                  <X size={18} />
+                </button>
+                <div className="relative aspect-[16/10] w-full bg-slate-100">
+                  {imageErrors.has(img.id) ? (
+                    <div className="flex h-full w-full items-center justify-center text-slate-500">
+                      Image not available
+                    </div>
+                  ) : (
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 900px"
+                      priority
+                      onError={() => handleImageError(img.id)}
+                    />
+                  )}
                 </div>
-              ) : (
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 900px"
-                  priority
-                  onError={() => handleImageError(selectedImage.id)}
-                />
-              )}
-            </div>
+                <div className="p-5 md:p-7">
+                  <span className="inline-flex rounded-full bg-blue-600/10 px-3 py-1 text-xs font-semibold text-blue-600">
+                    {img.category}
+                  </span>
 
-            {/* Content */}
-            <div className="p-5 md:p-7">
-              <span className="inline-flex rounded-full bg-blue-600/10 px-3 py-1 text-xs font-semibold text-blue-600">
-                {selectedImage.category}
-              </span>
+                  <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+                    {img.title}
+                  </h3>
 
-              <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-                {selectedImage.title}
-              </h3>
-
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
-                {selectedImage.description}
-              </p>
-            </div>
-          </div>
-        </div>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
+                    {img.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })()}
+        </motion.div>
       )}
-    </section>
+    </motion.section>
   );
 }

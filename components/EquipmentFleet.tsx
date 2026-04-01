@@ -1,5 +1,6 @@
 import { ArrowRight, ShieldCheck, Truck, Wrench } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export function EquipmentFleet() {
   const equipment = [
@@ -77,7 +78,13 @@ export function EquipmentFleet() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-16 md:py-20">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+      className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-16 md:py-20"
+    >
       {/* subtle background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-100/40 blur-3xl" />
@@ -86,7 +93,13 @@ export function EquipmentFleet() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-3xl text-center"
+        >
           <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 shadow-sm">
             Industrial Equipment
           </div>
@@ -100,10 +113,16 @@ export function EquipmentFleet() {
             and reliable industrial operations across cargo, river, and heavy
             material projects.
           </p>
-        </div>
+        </motion.div>
 
         {/* Premium Stats */}
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4"
+        >
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
@@ -123,10 +142,16 @@ export function EquipmentFleet() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {equipment.map((item, idx) => (
             <div
               key={idx}
@@ -175,7 +200,7 @@ export function EquipmentFleet() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom CTA */}
         <div className="mt-14 text-center">
@@ -208,6 +233,6 @@ export function EquipmentFleet() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

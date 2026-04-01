@@ -9,6 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function PremiumFooter() {
   const quickLinks = [
@@ -44,7 +45,13 @@ export function PremiumFooter() {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-[#020817] text-slate-100">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+      className="relative overflow-hidden bg-[#020817] text-slate-100"
+    >
       {/* Premium background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.08),transparent_28%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.06),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.05),transparent_26%)]" />
@@ -53,10 +60,22 @@ export function PremiumFooter() {
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
         {/* Main Footer */}
-        <div className="border-t border-white/5 py-14 md:py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="border-t border-white/5 py-14 md:py-16"
+        >
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.95fr] lg:gap-20">
             {/* Left Content */}
-            <div className="max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="max-w-xl"
+            >
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-400/80">
                 Trusted Port Operations
               </p>
@@ -75,22 +94,30 @@ export function PremiumFooter() {
               {/* Social */}
               <div className="mt-8 flex gap-3">
                 {socialLinks.map(({ icon: Icon, link, label }) => (
-                  <a
+                  <motion.a
                     key={label}
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-400 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-blue-300 hover:shadow-[0_0_24px_rgba(59,130,246,0.15)]"
+                    whileHover={{ y: -3, scale: 1.05 }}
+                    transition={{ duration: 0.25 }}
+                    className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-400 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-blue-300 hover:shadow-[0_0_24px_rgba(59,130,246,0.15)]"
                   >
                     <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Content */}
-            <div className="flex flex-col justify-between gap-10 lg:items-end">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col justify-between gap-10 lg:items-end"
+            >
               {/* Quick Links */}
               <div className="w-full lg:max-w-md">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
@@ -118,8 +145,10 @@ export function PremiumFooter() {
 
                 <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
                   {contactInfo.map(({ icon: Icon, value }) => (
-                    <div
+                    <motion.div
                       key={value}
+                      whileHover={{ y: -2, scale: 1.02 }}
+                      transition={{ duration: 0.25 }}
                       className="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3.5 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/20 hover:bg-white/[0.05]"
                     >
                       <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-blue-500/15 bg-blue-500/10">
@@ -129,16 +158,22 @@ export function PremiumFooter() {
                       <p className="text-sm font-medium leading-6 text-slate-200">
                         {value}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/5 py-5">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="border-t border-white/5 py-5"
+        >
           <div className="flex flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
             <p className="text-xs font-medium text-slate-500 sm:text-sm">
               © 2024 Pubali Enterprise. All rights reserved.
@@ -148,8 +183,8 @@ export function PremiumFooter() {
               Reliable cargo & barge logistics solutions across Bangladesh.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

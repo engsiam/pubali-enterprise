@@ -6,6 +6,7 @@ import {
   Moon,
   Zap,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function NightOperationsSection() {
   const features = [
@@ -39,7 +40,13 @@ export function NightOperationsSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-12 md:py-14 text-white">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+      className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-12 md:py-14 text-white"
+    >
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-48 w-48 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl" />
@@ -54,7 +61,13 @@ export function NightOperationsSection() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto mb-10 max-w-xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto mb-10 max-w-xl text-center"
+        >
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-sm shadow-[0_4px_20px_rgba(255,255,255,0.04)]">
             <Moon size={15} className="text-yellow-300" />
             24/7 Capability
@@ -81,10 +94,16 @@ export function NightOperationsSection() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Compact Features */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
+        >
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
@@ -116,7 +135,7 @@ export function NightOperationsSection() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Compact CTA */}
         <div className="mt-10 text-center">
@@ -136,6 +155,6 @@ export function NightOperationsSection() {
 
       {/* bottom fade */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 to-transparent" />
-    </section>
+    </motion.section>
   );
 }

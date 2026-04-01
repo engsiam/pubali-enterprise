@@ -108,7 +108,11 @@ export function Contact() {
   ];
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
       id="contact"
       className="relative overflow-hidden py-16 md:py-20 lg:py-24"
     >
@@ -385,6 +389,6 @@ export function Contact() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

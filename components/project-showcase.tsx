@@ -1,5 +1,6 @@
 import { Calendar, MapPin, TrendingUp } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export function ProjectShowcase() {
   const projects = [
@@ -80,10 +81,22 @@ export function ProjectShowcase() {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+      className="py-12 md:py-16 bg-white"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-4">
             <TrendingUp size={16} className="text-accent" />
             <span className="text-sm font-medium text-accent">
@@ -97,10 +110,16 @@ export function ProjectShowcase() {
             Real project examples showcasing our expertise, equipment, and
             professionalism
           </p>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {projects.map((project, idx) => (
             <div
               key={idx}
@@ -160,7 +179,7 @@ export function ProjectShowcase() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom CTA */}
         <div className="mt-12 text-center bg-gradient-to-r from-primary/5 to-blue-600/5 border border-primary/20 rounded-lg p-8">
@@ -179,6 +198,6 @@ export function ProjectShowcase() {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
