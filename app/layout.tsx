@@ -53,7 +53,7 @@ export default function RootLayout({
       className={`${inter.variable} ${merriweather.variable}`}
     >
       <body className="font-sans antialiased">
-        <PremiumCursor />
+      
         {children}
         <Analytics />
       </body>
